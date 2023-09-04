@@ -38,7 +38,7 @@
                         <label class="login-icon" for="password">
                             <img src="https://dummyimage.com/20x20/000/000" alt="">
                         </label>
-                        <input class="login-input" type="text" id="password" name="password" value="{{ old('password') }}" placeholder="Password">
+                        <input class="login-input" type="password" id="password" name="password" value="{{ old('password') }}" placeholder="Password">
                     </div>
                     <div class="login-item__sub">
                         <div class="login-error">
