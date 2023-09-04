@@ -13,12 +13,13 @@ use App\Http\Requests\LoginRequest;
 // Hash読込
 use Illuminate\Support\Facades\Hash;
 // Mail読込
-// use Illuminate\Support\Facades\Mail;
-// use App\Mail\confirmMail;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\sendMail;
 // Carbon読込
 use Carbon\Carbon;
 // Event読込
 use Illuminate\Auth\Events\Registered;
+// EmailVerificationRequest読込
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 class UserController extends Controller
@@ -81,27 +82,26 @@ class UserController extends Controller
         // フォーム情報を取得
         $form = $request->only('name', 'email', 'password');
 
-        // パスワードをハッシュ化
-        $hash = Hash::make($form['password']);
+        // ランダム文字列を生成
+        $token = bin2hex(random_bytes(32));
 
         // ユーザー情報を格納
         $user = [
             'name' => $form['name'],
             'email' => $form['email'],
-            'password' => $hash
+            'password' => Hash::make($form['password']),
+            'remember_token' => Hash::make($token)
         ];
 
         // create処理
         User::create($user);
 
-
-        event(new Registered($user));
-
-        // Mail::send(new confirmMail($user));
-        // Mail::send(new confirmMail($user['name'], $user['email'], $user['password']));
+        // イベント実行
+        // event(new Registered($user));
+        Mail::send(new sendMail($user['name'], $user['email'], $token));
         
         //メール二重送信防止
-        // $request->session()->regenerateToken();
+        $request->session()->regenerateToken();
 
         // return redirect('/thanks');
         return redirect('/email/verify');
@@ -114,16 +114,27 @@ class UserController extends Controller
      * @return view
      */
     public function indexComplete(Request $request)
-    {
-        // $user = $request->only(['name', 'email', 'password']);
-        // if (!empty($user['name']) && !empty($user['email']) && !empty($user['password'])) {
-        //     $user->email_verified_at = Carbon::now();
-        //     $user->save();
-        //     return view('auth.thanks');
-        // } else {
-        //     return redirect('/register');
-        // }
+    {   
+        // ユーザー情報を全件取得
+        $records = User::all();
 
+        // ユーザー情報からトークンに合致する情報の取得
+        foreach ($records as $record) {
+            if (Hash::check($request['token'], $record['remember_token'])) {
+                $user = $record;
+            }
+        }
+
+        // レコードが無い場合
+        if (!$user) {
+            return redirect('/register')->withErrors([
+                'email' => '登録情報がございません'
+            ]);
+        }
+
+        // メール認証時刻を挿入
+        $user->email_verified_at = Carbon::now();
+        $user->save();
         return view('auth.thanks');
     }
 
@@ -165,25 +176,25 @@ class UserController extends Controller
         return view('auth.verify-email');
     }
 
-    /**
-     * メール確認ハンドラ
-     * @param array $request
-     * @return redirect
-     */
-    public function confirmEmail(EmailVerificationRequest $request) {
-        $request->fulfill();
+    // /**
+    //  * メール確認ハンドラ
+    //  * @param array $request
+    //  * @return redirect
+    //  */
+    // public function confirmEmail(EmailVerificationRequest $request) {
+    //     $request->fulfill();
 
-        return redirect('/');
-    }
+    //     return redirect('/');
+    // }
 
-    /**
-     * メール確認の再送信
-     * @param array $request
-     * @return back
-     */
-    public function resendEmail(Request $request)
-    {
-        $request->user()->sendEmailVerificationNotification();
-        return back()->with('message', 'Verification link sent!');
-    }
+    // /**
+    //  * メール確認の再送信
+    //  * @param array $request
+    //  * @return back
+    //  */
+    // public function resendEmail(Request $request)
+    // {
+    //     $request->user()->sendEmailVerificationNotification();
+    //     return back()->with('message', 'Verification link sent!');
+    // }
 }
