@@ -15,7 +15,7 @@
 
         <!-- button -->
         <div class="logout-button">
-            <a class="logout-button__login" href="/login">飲食店一覧ページ</a>
+            <a class="logout-button__login" href="/">飲食店一覧ページ</a>
         </div>
     </div>
 </div>
