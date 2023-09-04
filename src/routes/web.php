@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 // Controller読込
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ShopController;
+// AuthFacades読込
+// use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,14 +17,13 @@ use App\Http\Controllers\ShopController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Auth::route();
 
 // Route::middleware('verified')->group(function() {
     
-// Route::middleware(['auth', 'verified'])->group(function() {
-    // });
 
 // view表示：飲食店一覧ページ
-Route::get('/', [ShopController::class, 'indexShops']); 
+Route::get('/', [ShopController::class, 'indexShops'])->name('verification.notice'); 
 
 // view表示：ログインページ
 Route::get('/login', [UserController::class, 'indexLogin']);
@@ -34,22 +35,25 @@ Route::get('/register', [UserController::class, 'indexRegister']);
 Route::post('/register', [UserController::class, 'storeUser']);
 
 // view表示：メール送信済ページ
-Route::get('/email/verify', [UserController::class, 'indexMail'])->name('verification.notice');
+Route::get('/email/verify', [UserController::class, 'indexMail']);
 // Route::get('/email/verify', [UserController::class, 'indexMail'])->middleware('auth')->name('verification.notice');
 // メール確認ハンドラ
-Route::get('/email/verify/{id}/{hash}', [UserController::class, 'confirmEmail'])->middleware('signed')->name('verification.verify');
+// Route::get('/email/verify/{id}/{hash}', [UserController::class, 'confirmEmail'])->middleware('signed')->name('verification.verify');
 // Route::get('/email/verify/{id}/{hash}', [UserController::class, 'confirmEmail'])->middleware(['auth', 'signed'])->name('verification.verify');
 // メールの再送信
-Route::post('/email/verification-notification', [UserController::class, 'resendEmail'])->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+// Route::post('/email/verification-notification', [UserController::class, 'resendEmail'])->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 // view表示：サンクスページ
 Route::get('/thanks', [UserController::class, 'indexComplete']);
 
-// view表示：マイページ
-Route::get('/mypage', [UserController::class, 'personal']);
-// view表示：ログアウトページ
-Route::post('/logout', [UserController::class, 'logout']);
-
+// 認証済ユーザーのルート
+Route::middleware(['auth', 'verified'])->group(function() {
+    // view表示：マイページ
+    Route::get('/mypage', [UserController::class, 'personal']);
+    // view表示：ログアウトページ
+    Route::post('/logout', [UserController::class, 'logout']);
+});
+    
 // 保護下のルート
 Route::get('/profile', function() {
 })->middleware('verified');
