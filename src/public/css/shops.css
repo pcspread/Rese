@@ -1,0 +1,231 @@
+@charset "UTF-8";
+
+/* ======================================================================
+search
+====================================================================== */
+.shops-section {
+    padding: 32px 0;
+    background-color: #EEE;
+}
+
+.search-group {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    margin-right: 15px;
+    padding: 32px 5% 10px;
+    z-index: 5;
+    background-color: #EEE;
+}
+
+.search-wrapper {
+    width: 500px;
+    margin-left: auto;
+    padding: 10px;
+    display: flex;
+    justify-content: left;
+    background-color: #FFF;
+    border-radius: 5px;
+}
+
+.search-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+    .search-group {
+        padding: 100px 5% 15px;
+        margin-left: 0;
+    }
+
+    .search-wrapper {
+        width: 100%;
+        max-width: 250px;
+        margin: 0 auto;
+        display: block;
+    }
+
+    .search-item {
+        justify-content: left;
+    }
+}
+
+/* ========================= select ========================= */
+.search-title {
+    padding: 0 10px 0 5px;
+    font-weight: bold;
+}
+
+.search-menu {
+    border-right: 1px solid #DDD;
+}
+
+@media screen and (max-width: 768px) {
+    .search-menu {
+        border-right: none;
+    }
+}
+
+.search-menu__icon {
+    padding: 5px;
+    transform: translateY(5px), rotate(90deg);
+    font-weight: bold;
+    text-shadow: 1px 0 0 #CCC;
+    color: #CCC;
+}
+
+.search-menu__icon:hover {
+    cursor: pointer;
+    transform: scaleX(2);
+}
+
+.search-menu__list {
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    border-top: none;
+    background-color: #FFF;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 3px 2px 1px #555;
+    transform: translate(-71px, 3px);
+}
+
+.search-menu__record {
+    width: 85px;
+    height: 40px;
+    list-style: none;
+}
+
+.search-menu__record:hover {
+    background-color: #EEE;
+}
+
+.search-menu__link {
+    display: block;
+    width: 85px;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 5px;
+    text-decoration: none;
+}
+
+/* ========================= icon ========================= */
+.search-icon {
+    padding: 5px;
+}
+
+.search-icon__content {}
+
+.search-input {}
+
+.search-input__box {
+    border: none;
+    color: #CCC;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+    .search-input__box {
+        width: 100%;
+
+    }
+}
+
+/* ========================= add-class ========================= */
+.open {
+    display: flex;
+}
+
+.color {
+    color: #AAA;
+}
+
+/* ======================================================================
+shops
+====================================================================== */
+.shops-group {
+    margin-top: 65px;
+    padding-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width: 768px) {
+    .shops-group {
+        margin-top: 215px;
+    }
+}
+
+.shop-card {
+    width: 250px;
+    margin: 10px 8px;
+    border-radius: 5px;
+    background-color: #FFF;
+    box-shadow: 2px 2px 2px #888;
+}
+
+/* ========================= image ========================= */
+.shop-card__firstView {
+    border-radius: 5px 5px 0 0;
+}
+
+.shop-card__image {
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+}
+
+.shop-card__content {
+    border-radius: 0 0 5px 5px;
+    padding: 10px;
+}
+
+/* ========================= title ========================= */
+.shop-title {
+    padding-bottom: 5px;
+    font-size: 18px;
+}
+
+.shop-card__tags {}
+
+.shop-card__tag {}
+
+/* ========================= clicks ========================= */
+.shop-card__clicks {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 8px;
+}
+
+.shop-card__detail-click {
+    padding: 5px 15px;
+    border-radius: 5px;
+    background-color: #287ADC;
+    text-decoration: none;
+    color: #FFF;
+}
+
+.shop-card__detail-click:hover {
+    opacity: .5;
+}
+
+.shop-card__form {}
+
+.shop-card__interest-click {
+    border: none;
+    background-color: #FFF;
+    font-size: 32px;
+    color: #EEE;
+}
+
+.shop-card__interest-click:hover {
+    cursor: pointer;
+    color: #FF0000;
+}

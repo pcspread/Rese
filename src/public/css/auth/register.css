@@ -1,0 +1,119 @@
+@charset "UTF-8";
+
+/* ======================================================================
+all
+====================================================================== */
+.register-section {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.register-wrapper {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    margin: 0 auto;
+    border: none;
+    box-shadow: 3px 3px 2px #AAA;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 480px) {
+    .register-wrapper {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .register-wrapper {
+        top: 50%;
+    }
+}
+
+/* ======================================================================
+title
+====================================================================== */
+.register-title {
+    background-color: #287ADC;
+    border-radius: 5px 5px 0 0;
+    padding: 15px;
+}
+
+.register-title__content {
+    text-align: left;
+    color: #FFF;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+/* ======================================================================
+content
+====================================================================== */
+
+.register-content {
+    padding: 24px;
+    border-radius: 0 0 5px 5px;
+    background-color: #FFF;
+}
+
+.register-form {
+    margin: 0 auto;
+}
+
+.register-item {}
+
+.register-item__main {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.register-icon {
+    width: 10%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.register-icon__image {}
+
+.register-input {
+    width: 90%;
+    padding: 3px;
+    border: none;
+    border-bottom: 3px solid #888;
+    color: #888;
+    font-weight: bold;
+}
+
+.register-item__sub {
+    min-height: 22px;
+    padding-left: 15px;
+}
+
+.register-error {
+    color: #FF0000;
+}
+
+.register-button {}
+
+.register-button__submit {
+    display: block;
+    margin-left: auto;
+    padding: 6px 15px;
+    border: none;
+    border-radius: 7px;
+    background-color: #287ADC;
+    color: #FFF;
+}
+
+.register-button__submit:hover {
+    cursor: pointer;
+    background-color: #0000FF;
+}
