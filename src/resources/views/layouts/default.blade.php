@@ -29,10 +29,10 @@
         <div class="header-mene">
             <nav class="header-menu__nav">
                 <ul class="nav-list">
-                    @if (!Auth::check())
                     <li class="nav-list__item">
                         <a href="/" class="nav-list__link">Home</a>
                     </li>
+                    @if (!Auth::check())
                     <li class="nav-list__item">
                         <a href="/register" class="nav-list__link">Registration</a>
                     </li>

@@ -34,12 +34,12 @@
 
                     <div class="email-content__sub">
                         <p class="email-content__description">
-                            こちらは、{{ $name }}様専用のご登録確認メールです。<br>
-                            下記「登録を完了する」をクリックいただくと登録が完了します。  
+                            こちらは、{{ $name }}様専用のメール認証用の確認メールです。<br>
+                            下記「認証を完了する」をクリックいただくと、本登録が完了します。  
                         </p>
                         
                         <div class="email-button">
-                            <a class="email-button__thanks" href="{{ url('http://localhost/thanks?token='.$token) }}">登録を完了する</a>
+                            <a class="email-button__thanks" href="{{ url('http://localhost/thanks?token='.$token) }}">認証を完了する</a>
                         </div>
                     </div>
                 </div>
