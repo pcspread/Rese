@@ -45,6 +45,14 @@ class UserController extends Controller
         // フォーム情報を取得
         $form = $request->only(['email', 'password']);
 
+        // メール認証がされていない場合
+        $record = User::where('email', $form['email'])->first();
+        if (empty($record['email_verified_at'])) {
+            return back()->withErrors([
+                'password' => 'メール認証が未完了です'
+            ]);
+        }
+
         // ユーザー情報有の場合
         if (Auth::attempt($form)) {
             // セッションID生成
@@ -57,7 +65,7 @@ class UserController extends Controller
         }
 
         return back()->withErrors([
-            'email' => '登録情報が見つかりませんでした'
+            'password' => '登録情報が見つかりませんでした'
         ]);
     }
 
@@ -96,7 +104,7 @@ class UserController extends Controller
         // create処理
         User::create($user);
 
-        // イベント実行
+        // メール送信
         // event(new Registered($user));
         Mail::send(new sendMail($user['name'], $user['email'], $token));
         
@@ -104,7 +112,11 @@ class UserController extends Controller
         $request->session()->regenerateToken();
 
         // return redirect('/thanks');
-        return redirect('/email/verify');
+        return redirect('/email/verify')->with([
+            'name' => $user['name'], 
+            'email' => $user['email'], 
+            'token' => $token
+        ]);
     }
 
     /**
@@ -128,7 +140,7 @@ class UserController extends Controller
         // レコードが無い場合
         if (!$user) {
             return redirect('/register')->withErrors([
-                'email' => '登録情報がございません'
+                'password' => '登録情報がございません'
             ]);
         }
 
@@ -174,6 +186,32 @@ class UserController extends Controller
     public function indexMail()
     {
         return view('auth.verify-email');
+    }
+
+    /**
+     * 認証メールの再送信
+     * @param array $request
+     * @param void
+     */
+    public function resendMail(Request $request)
+    {
+        // ユーザー情報を取得
+        $user = $request->only('name', 'email', 'token');
+
+        
+        // メール送信
+        // event(new Registered($user));
+        Mail::send(new sendMail($user['name'], $user['email'], $user['token']));
+        
+        //メール二重送信防止
+        $request->session()->regenerateToken();
+
+        // return redirect('/thanks');
+        return redirect('/email/verify')->with([
+            'name' => $user['name'], 
+            'email' => $user['email'], 
+            'token' => $user['token']
+        ]);
     }
 
     // /**

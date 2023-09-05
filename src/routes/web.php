@@ -36,6 +36,8 @@ Route::post('/register', [UserController::class, 'storeUser']);
 
 // view表示：メール送信済ページ
 Route::get('/email/verify', [UserController::class, 'indexMail']);
+// view表示：メール送信済ページ
+Route::post('/email/verify', [UserController::class, 'resendMail']);
 // Route::get('/email/verify', [UserController::class, 'indexMail'])->middleware('auth')->name('verification.notice');
 // メール確認ハンドラ
 // Route::get('/email/verify/{id}/{hash}', [UserController::class, 'confirmEmail'])->middleware('signed')->name('verification.verify');
