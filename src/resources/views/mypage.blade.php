@@ -30,24 +30,22 @@
                     </div>
 
                     <div class="reserve-card__content">
-                        <table class="reserve-table">
-                            <tr class="reserve-table__item">
-                                <th class="reserve-table__item-title">Shop</th>
-                                <td class="reserve-table__item-content">仙人</td>
-                            </tr>
-                            <tr class="reserve-table__item">
-                                <th class="reserve-table__item-title">Date</th>
-                                <td class="reserve-table__item-content">2021-04-01</td>
-                            </tr>
-                            <tr class="reserve-table__item">
-                                <th class="reserve-table__item-title">Time</th>
-                                <td class="reserve-table__item-content">17:00</td>
-                            </tr>
-                            <tr class="reserve-table__item">
-                                <th class="reserve-table__item-title">Number</th>
-                                <td class="reserve-table__item-content">1人</td>
-                            </tr>
-                        </table>
+                        <div class="reserve-card__item">
+                            <label class="reserve-card__item-title">Shop</label>
+                            <input class="reserve-card__item-content" type="text" name="shop" placeholder="入力欄">
+                        </div>
+                        <div class="reserve-card__item">
+                            <label class="reserve-card__item-title">Date</label>
+                            <input class="reserve-card__item-content" type="text" name="date" placeholder="入力欄">
+                        </div>
+                        <div class="reserve-card__item">
+                            <label class="reserve-card__item-title">Time</label>
+                            <input class="reserve-card__item-content" type="text" name="time" placeholder="入力欄">
+                        </div>
+                        <div class="reserve-card__item">
+                            <label class="reserve-card__item-title">Number</label>
+                            <input class="reserve-card__item-content" type="text" name="number" placeholder="入力欄">
+                        </div>
                     </div>
                 </form>
             </div>

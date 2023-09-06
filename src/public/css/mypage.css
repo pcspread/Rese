@@ -80,16 +80,18 @@ reserve
     transform: scaleX(1.2);
 }
 
-.reserve-card__content {}
-
-.reserve-table {
+.reserve-card__content {
     width: 100%;
 }
 
-.reserve-table__item {}
+.reserve-card__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-.reserve-table__item-title {
-    width: 30%;
+.reserve-card__item-title {
+    width: 25%;
     text-align: left;
     padding: 5px 0;
     font-size: 12px;
@@ -97,30 +99,19 @@ reserve
     color: #FFF;
 }
 
-.reserve-table__item-content {
-    width: 70%;
+.reserve-card__item-content {
+    width: 75%;
+    border: none;
+    border-radius: 3px;
+    background-color: #287ADC;
     padding: 5px 0;
     font-size: 12px;
     color: #FFF;
 }
 
-.reserve-table__item {}
-
-.reserve-table__item-title {}
-
-.reserve-table__item-content {}
-
-.reserve-table__item {}
-
-.reserve-table__item-title {}
-
-.reserve-table__item-content {}
-
-.reserve-table__item {}
-
-.reserve-table__item-title {}
-
-.reserve-table__item-content {}
+.reserve-card__item-content::placeholder {
+    color: #FFF;
+}
 
 /* ======================================================================
 shops
