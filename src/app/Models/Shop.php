@@ -18,40 +18,44 @@ class Shop extends Model
     ];
 
     /**
-     * 値をセッションに格納する
-     * @param string $name セッション名
-     * @param string $target 要素
-     * @return string $result 要素
+     * scope検索
+     * region
+     * @param object $query
+     * @param string $region
+     * @return void
      */
-    public function putSesArea($target)
+    public function scopeRegionSearch($query, $region)
     {
-        if (empty($target)) {
-            session()->flush('area');
-        } else {
-            // dd($target);
-            // セッションに格納
-            session()->flash('area', $target);
-            // dd(session('area'));
+        if (!empty($region)) {
+            $query->where('region', 'like', "%{$region}%");
         }
-
-        return $target;
     }
 
     /**
-     * 値をセッションに格納する
-     * @param string $name セッション名
-     * @param string $target 要素
-     * @return string $result 要素
+     * scope検索
+     * genre
+     * @param object $query
+     * @param string $genre
+     * @return void
      */
-    public function putSesGenre($target)
+    public function scopeGenreSearch($query, $genre)
     {
-        if (empty($target)) {
-            session()->flush('genre');
-        } else {
-            // セッションに格納
-            session()->flash('genre', $target);
+        if (!empty($genre)) {
+            $query->where('genre', 'like', "%{$genre}%");
         }
+    }
 
-        return $target;
+    /**
+     * scope検索
+     * name
+     * @param object $param
+     * @param string $name
+     * @return void
+     */
+    public function scopeAllSearch($query, $all)
+    {
+        if (!empty($all)) {
+            $query->where('name', 'like', "%{$all}%")->orWhere('region', 'like', "%{$all}%")->orWhere('genre', 'like', "%{$all}%");
+        }
     }
 }

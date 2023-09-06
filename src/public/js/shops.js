@@ -54,3 +54,15 @@ function genreClick() {
     });
 }
 genreClick();
+
+/**
+ * 検索窓に入力があった場合の処理
+ */
+function allSearch() {
+    const target = document.querySelector('.search-input__box');
+
+    target.addEventListener('change', function () {
+        window.location.href = `/?all=${this.value}`;
+    });
+}
+allSearch();
