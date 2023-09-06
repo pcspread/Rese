@@ -1,3 +1,7 @@
+@php
+    use App\Models\Shop;
+@endphp
+
 @extends('layouts.default')
 
 @section('css')
@@ -18,11 +22,10 @@
                 <div class="search-menu">
                     <div class="search-menu__icon">〉</div>
                     <ul class="search-menu__list">
-                        @for ($i = 0; $i < 10; $i++)
-                        <li class="search-menu__record">
-                            <a class="search-menu__link" href="">#東京都</a>
-                        </li>
-                        @endfor
+                        <li class="search-menu__record area">#全て</li>
+                        @foreach ($regions as $region)
+                        <li class="search-menu__record area">#{{ $region }}</li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -32,11 +35,10 @@
                 <div class="search-menu">
                     <div class="search-menu__icon">〉</div>
                     <ul class="search-menu__list">
-                        @for ($i = 0; $i < 10; $i++)
-                        <li class="search-menu__record">
-                            <a class="search-menu__link" href="">#ラーメン</a>
-                        </li>
-                        @endfor
+                        <li class="search-menu__record genre">#全て</li>
+                        @foreach ($genres as $genre)
+                        <li class="search-menu__record genre">#{{ $genre }}</li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -53,21 +55,19 @@
     </div>
 
     <div class="shops-group">
-        @for ($i = 0; $i < 15; $i++)
+        @foreach ($shops as $shop)
         <div class="shop-card">
             <div class="shop-card__firstView">
-                <img class="shop-card__image" src="https://dummyimage.com/400x200/000/000" alt="">
+                <img class="shop-card__image" src="{{ $shop['photo'] }}" alt="shop-photo">
             </div>
             <div class="shop-card__content">
-                <h1 class="shop-title">
-                    仙人
-                </h1>
+                <h1 class="shop-title">{{ $shop['name'] }}</h1>
                 <div class="shop-card__tags">
-                    <span class="shop-card__tag">#東京都</span>
-                    <span class="shop-card__tag">#ラーメン</span>
+                    <span class="shop-card__tag">#{{ $shop['region'] }}</span>
+                    <span class="shop-card__tag">#{{ $shop['genre'] }}</span>
                 </div>
                 <div class="shop-card__clicks">
-                    <a class="shop-card__detail-click" href="#">詳しく見る</a>
+                    <a class="shop-card__detail-click" href="/detail/{{ $shop['id'] }}">詳しく見る</a>
                     <form class="shop-card__form" action="#">
                         <input type="hidden">
                         <input class="shop-card__interest-click" type="submit" value="♥">
@@ -75,7 +75,7 @@
                 </div>
             </div>
         </div>
-        @endfor
+        @endforeach
     </div>
 </div>
 @endsection

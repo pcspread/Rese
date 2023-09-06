@@ -23,14 +23,14 @@ use App\Http\Controllers\ShopController;
     
 
 // view表示：飲食店一覧ページ
-Route::get('/', [ShopController::class, 'indexShops'])->name('verification.notice'); 
+Route::get('/', [ShopController::class, 'indexShops'])->name('indexShops');
 
 // view表示：ログインページ
 Route::get('/login', [UserController::class, 'indexLogin']);
 // login処理
 Route::post('/login', [UserController::class, 'login'])->name('login');
 // view表示：蜃気楼得ページ
-Route::get('/register', [UserController::class, 'indexRegister']);
+Route::get('/register', [UserController::class, 'indexRegister'])->name('verification.notice');
 // create処理
 Route::post('/register', [UserController::class, 'storeUser']);
 
