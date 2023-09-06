@@ -22,9 +22,9 @@
                 <div class="search-menu">
                     <div class="search-menu__icon">〉</div>
                     <ul class="search-menu__list">
-                        <li class="search-menu__record area">#全て</li>
+                        <li class="search-menu__record area">全て</li>
                         @foreach ($regions as $region)
-                        <li class="search-menu__record area">#{{ $region }}</li>
+                        <li class="search-menu__record area">{{ $region }}</li>
                         @endforeach
                     </ul>
                 </div>
@@ -35,9 +35,9 @@
                 <div class="search-menu">
                     <div class="search-menu__icon">〉</div>
                     <ul class="search-menu__list">
-                        <li class="search-menu__record genre">#全て</li>
+                        <li class="search-menu__record genre">全て</li>
                         @foreach ($genres as $genre)
-                        <li class="search-menu__record genre">#{{ $genre }}</li>
+                        <li class="search-menu__record genre">{{ $genre }}</li>
                         @endforeach
                     </ul>
                 </div>
@@ -49,6 +49,9 @@
                 </div>
                 <div class="search-input">
                     <input class="search-input__box" type="text" placeholder="Search ...">
+                </div>
+                <div class="search-not">
+                    <a class="search-not__button" href="/">×</a>
                 </div>
             </div>
         </div>
