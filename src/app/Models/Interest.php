@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Interest extends Model
 {
     use HasFactory;
+
+    // タイムスタンプを無効に
+    public $timestamps = false;
+
+    protected $fillable = [
+        'user_id',
+        'shop_id'
+    ];
 }

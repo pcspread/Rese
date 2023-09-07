@@ -58,4 +58,14 @@ class Shop extends Model
             $query->where('name', 'like', "%{$all}%")->orWhere('region', 'like', "%{$all}%")->orWhere('genre', 'like', "%{$all}%");
         }
     }
+
+    /**
+     * リレーション設定
+     * @param void
+     * @return object
+     */
+    public function Interest()
+    {
+        return $this->hasOne(Interest::class);
+    }
 }

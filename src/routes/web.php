@@ -21,16 +21,15 @@ use App\Http\Controllers\ShopController;
 
 // Route::middleware('verified')->group(function() {
     
-
-// view表示：飲食店一覧ページ
-Route::get('/', [ShopController::class, 'indexShops'])->name('indexShops');
+// view表示：飲食店一覧ページ作成
+Route::get('/', [ShopController::class, 'indexShops'])->name('verification.notice');
 
 // view表示：ログインページ
 Route::get('/login', [UserController::class, 'indexLogin']);
 // login処理
 Route::post('/login', [UserController::class, 'login'])->name('login');
-// view表示：蜃気楼得ページ
-Route::get('/register', [UserController::class, 'indexRegister'])->name('verification.notice');
+// view表示：新規登録ページ
+Route::get('/register', [UserController::class, 'indexRegister']);
 // create処理
 Route::post('/register', [UserController::class, 'storeUser']);
 
@@ -54,6 +53,10 @@ Route::middleware(['auth', 'verified'])->group(function() {
     Route::get('/mypage', [UserController::class, 'personal']);
     // view表示：ログアウトページ
     Route::post('/logout', [UserController::class, 'logout']);
+    // お気に入り追加処理
+    Route::post('/like/{id}', [ShopController::class, 'addLike']);
+    // お気に入り削除処理
+    Route::patch('/like/{id}', [ShopController::class, 'cancelLike']);
 });
     
 // 保護下のルート
