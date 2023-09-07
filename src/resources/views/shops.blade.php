@@ -1,5 +1,6 @@
 @php
     use App\Models\Shop;
+    use Illuminate\Support\Facades\Auth;
 @endphp
 
 @extends('layouts.default')
@@ -48,10 +49,10 @@
                     <div class="search-icon__content">🔍</div>
                 </div>
                 <div class="search-input">
-                    <input class="search-input__box" type="text" placeholder="Search ...">
+                    <input class="search-input__box" type="text" value="" placeholder="Search ...">
                 </div>
                 <div class="search-not">
-                    <a class="search-not__button" href="/">×</a>
+                    <button class="search-not__button" type="button">×</button>
                 </div>
             </div>
         </div>
@@ -71,9 +72,17 @@
                 </div>
                 <div class="shop-card__clicks">
                     <a class="shop-card__detail-click" href="/detail/{{ $shop['id'] }}">詳しく見る</a>
-                    <form class="shop-card__form" action="#">
-                        <input type="hidden">
+                    <form class="shop-card__form" action="/like/{{ $shop['id'] }}" method="POST">
+                    @csrf
+                        @if (empty($shop->Interest))
                         <input class="shop-card__interest-click" type="submit" value="♥">
+                        @else
+                            <form class="shop-card__false-form" action="/like/{{ $shop['id'] }}" method="POST">
+                            @method('PATCH')
+                            @csrf
+                                <input class="shop-card__interest-click true" type="submit" value="♥">
+                            </form>
+                        @endif
                     </form>
                 </div>
             </div>

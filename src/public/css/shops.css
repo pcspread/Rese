@@ -120,7 +120,7 @@ search
 
 .search-input__box {
     border: none;
-    color: #CCC;
+    color: #777;
     font-weight: bold;
 }
 
@@ -130,11 +130,11 @@ search
     display: block;
     margin: 0 5px;
     padding: 0 3px;
-    border: 2px solid #555;
+    border: 3px solid #777;
     border-radius: 45px;
     background-color: #FFF;
-    color: #555;
-    text-decoration: none;
+    font-weight: bold;
+    color: #777;
 }
 
 .search-not__button:hover {
@@ -236,6 +236,10 @@ shops
     background-color: #FFF;
     font-size: 32px;
     color: #EEE;
+}
+
+.shop-card__interest-click.true {
+    color: #FF0000;
 }
 
 .shop-card__interest-click:hover {
