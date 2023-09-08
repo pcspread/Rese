@@ -149,4 +149,18 @@ class ShopController extends Controller
 
         return redirect('/mypage');
     }
+
+    /**
+     * view表示
+     * 飲食店詳細ページ
+     * @param int $id 店舗ID
+     * @return view
+     */
+    public function detailShop($id)
+    {
+        // 店舗情報の取得
+        $shop = Shop::find($id);
+
+        return view('detail', compact('shop'));
+    }
 }
