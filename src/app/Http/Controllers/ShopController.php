@@ -84,13 +84,29 @@ class ShopController extends Controller
                 $shops = Shop::GenreSearch($genre)->get();
             }
         }
-        
 
-        return view('shops', compact(['shops', 'regions', 'genres']));
+        // お気に入り情報を取得
+        $interests = Interest::where('user_id', Auth::id());
+
+        return view('shops', compact(['shops', 'regions', 'genres', 'interests']));
+    }
+    
+    /**
+     * view表示
+     * mypage.blade.php
+     * @param void
+     * @return view
+     */
+    public function personal()
+    {
+        // お気に入り店舗のIDを取得
+        $interests = Interest::where('user_id', Auth::id())->orderBy('shop_id', 'asc')->get();
+
+        return view('mypage', compact('interests'));
     }
 
     /**
-     * お気に入り追加処理
+     * お気に入り追加処理(飲食店一覧ページ)
      * @param int $id 店舗ID
      * @return redirect
      */
@@ -105,7 +121,7 @@ class ShopController extends Controller
     }
 
     /**
-     * お気に入り削除処理
+     * お気に入り削除処理(飲食店一覧ページ)
      * @param int $id 店舗ID
      * @return redirect
      */
@@ -117,5 +133,20 @@ class ShopController extends Controller
         ])->delete();
 
         return redirect('/');
+    }
+    
+    /**
+     * お気に入り削除処理(マイページ)
+     * @param int $id 店舗ID
+     * @return redirect
+     */
+    public function cancelLikeMy($id) {
+        // お気に入り追加処理
+        Interest::where([
+            'user_id' => Auth::id(),
+            'shop_id' => $id
+        ])->delete();
+
+        return redirect('/mypage');
     }
 }

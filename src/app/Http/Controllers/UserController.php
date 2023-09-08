@@ -151,17 +151,6 @@ class UserController extends Controller
     }
 
     /**
-     * view表示
-     * mypage.blade.php
-     * @param void
-     * @return view
-     */
-    public function personal()
-    {
-        return view('mypage');
-    }
-
-    /**
      * ログアウト処理
      * @param void
      * @return view

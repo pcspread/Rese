@@ -1,6 +1,5 @@
 @php
     use App\Models\Shop;
-    use Illuminate\Support\Facades\Auth;
 @endphp
 
 @extends('layouts.default')
@@ -74,14 +73,16 @@
                     <a class="shop-card__detail-click" href="/detail/{{ $shop['id'] }}">詳しく見る</a>
                     <form class="shop-card__form" action="/like/{{ $shop['id'] }}" method="POST">
                     @csrf
-                        @if (empty($shop->Interest))
-                        <input class="shop-card__interest-click" type="submit" value="♥">
-                        @else
-                            <form class="shop-card__false-form" action="/like/{{ $shop['id'] }}" method="POST">
-                            @method('PATCH')
-                            @csrf
-                                <input class="shop-card__interest-click true" type="submit" value="♥">
-                            </form>
+                        @if (Auth::check())
+                            @if (empty($shop->interest(Auth::id(), $shop['id'])))
+                            <input class="shop-card__interest-click" type="submit" value="♥">
+                            @else
+                                <form class="shop-card__false-form" action="/like/{{ $shop['id'] }}" method="POST">
+                                @method('PATCH')
+                                @csrf
+                                    <input class="shop-card__interest-click true" type="submit" value="♥">
+                                </form>
+                            @endif
                         @endif
                     </form>
                 </div>
