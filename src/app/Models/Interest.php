@@ -16,4 +16,15 @@ class Interest extends Model
         'user_id',
         'shop_id'
     ];
+
+    /**
+     * リレーション設定
+     * Shop
+     * @param void
+     * @return object
+     */
+    public function shop()
+    {
+        return $this->belongsTo(Shop::class);
+    }
 }

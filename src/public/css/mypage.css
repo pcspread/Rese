@@ -204,6 +204,10 @@ shops
     color: #EEE;
 }
 
+.shop-card__interest-click.true {
+    color: #FF0000;
+}
+
 .shop-card__interest-click:hover {
     cursor: pointer;
     color: #FF0000;

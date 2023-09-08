@@ -57,29 +57,34 @@
             </div>
         
             <div class="shops-cards">
-                @for ($i = 0; $i < 10; $i++)
+                @foreach ($interests as $interest)
                 <div class="shop-card">
                     <div class="shop-card__firstView">
-                        <img class="shop-card__image" src="https://dummyimage.com/400x200/000/000" alt="">
+                        <img class="shop-card__image" src="{{ $interest->shop['photo'] }}" alt="">
                     </div>
                     <div class="shop-card__content">
                         <h1 class="shop-title">
-                            仙人
+                            {{ $interest->shop['name'] }}
                         </h1>
                         <div class="shop-card__tags">
-                            <span class="shop-card__tag">#東京都</span>
-                            <span class="shop-card__tag">#ラーメン</span>
+                            <span class="shop-card__tag">#{{ $interest->shop->region }}</span>
+                            <span class="shop-card__tag">#{{ $interest->shop['genre'] }}</span>
                         </div>
                         <div class="shop-card__clicks">
-                            <a class="shop-card__detail-click" href="#">詳しく見る</a>
-                            <form class="shop-card__form" action="#">
-                                <input type="hidden">
-                                <input class="shop-card__interest-click" type="submit" value="♥">
+                            <a class="shop-card__detail-click" href="/detail/{{ $interest->shop['id'] }}">詳しく見る</a>
+
+                            <form class="shop-card__form" action="/mypage/like/{{ $interest->shop['id'] }}" method="POST">
+                            @csrf
+                                <form class="shop-card__false-form" action="/mypage/like/{{ $interest->shop['id'] }}" method="POST">
+                                @method('PATCH')
+                                @csrf
+                                    <input class="shop-card__interest-click true" type="submit" value="♥">
+                                </form>
                             </form>
                         </div>
                     </div>
                 </div>
-                @endfor
+                @endforeach
             </div>
         </div>
     </div>

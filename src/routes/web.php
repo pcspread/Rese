@@ -24,14 +24,19 @@ use App\Http\Controllers\ShopController;
 // view表示：飲食店一覧ページ作成
 Route::get('/', [ShopController::class, 'indexShops'])->name('verification.notice');
 
-// view表示：ログインページ
-Route::get('/login', [UserController::class, 'indexLogin']);
-// login処理
-Route::post('/login', [UserController::class, 'login'])->name('login');
-// view表示：新規登録ページ
-Route::get('/register', [UserController::class, 'indexRegister']);
-// create処理
-Route::post('/register', [UserController::class, 'storeUser']);
+Route::prefix('/login')->group(function() {
+    // view表示：ログインページ
+    Route::get('/', [UserController::class, 'indexLogin']);
+    // login処理
+    Route::post('/', [UserController::class, 'login'])->name('login');
+});
+
+Route::prefix('/register')->group(function() {
+    // view表示：新規登録ページ
+    Route::get('/', [UserController::class, 'indexRegister']);
+    // create処理
+    Route::post('/', [UserController::class, 'storeUser']);
+});
 
 // view表示：メール送信済ページ
 Route::get('/email/verify', [UserController::class, 'indexMail']);
@@ -50,13 +55,21 @@ Route::get('/thanks', [UserController::class, 'indexComplete']);
 // 認証済ユーザーのルート
 Route::middleware(['auth', 'verified'])->group(function() {
     // view表示：マイページ
-    Route::get('/mypage', [UserController::class, 'personal']);
+    Route::get('/mypage', [ShopController::class, 'personal']);
+    // view表示：飲食店詳細ページ
+    Route::get('/detail/{shop_id}', [ShopController::class, 'detailShop']);
+
+    Route::prefix('/like')->group(function() {
+        // お気に入り追加処理(飲食店一覧ページ)
+        Route::post('/{id}', [ShopController::class, 'addLike']);
+        // お気に入り削除処理(飲食店一覧ページ)
+        Route::patch('/{id}', [ShopController::class, 'cancelLike']);
+    });
+    // お気に入り削除処理(マイページ)
+    Route::patch('mypage/like/{id}', [ShopController::class, 'cancelLikeMy']);
+    
     // view表示：ログアウトページ
     Route::post('/logout', [UserController::class, 'logout']);
-    // お気に入り追加処理
-    Route::post('/like/{id}', [ShopController::class, 'addLike']);
-    // お気に入り削除処理
-    Route::patch('/like/{id}', [ShopController::class, 'cancelLike']);
 });
     
 // 保護下のルート

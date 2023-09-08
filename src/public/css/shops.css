@@ -93,6 +93,7 @@ search
     border-radius: 0 0 5px 5px;
     box-shadow: 0 3px 2px 1px #555;
     transform: translate(-71px, 3px);
+    z-index: 5;
 }
 
 .search-menu__record {

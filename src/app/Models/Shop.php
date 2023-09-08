@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+// Model読込
+use App\Models\Interest;
 
 class Shop extends Model
 {
@@ -61,11 +63,19 @@ class Shop extends Model
 
     /**
      * リレーション設定
-     * @param void
+     * @param $id ユーザー情報
      * @return object
      */
-    public function Interest()
+    public function interest($user_id, $shop_id)
     {
-        return $this->hasOne(Interest::class);
+        // $text =  $this->hasOne(Interest::class)->where('user_id', $id);
+        $text = Interest::where([
+            'user_id' => $user_id,
+            'shop_id' => $shop_id
+        ])->first();
+
+        if (!empty($text)) {
+            return $text;
+        }
     }
 }
