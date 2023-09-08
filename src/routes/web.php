@@ -23,6 +23,8 @@ use App\Http\Controllers\ShopController;
     
 // view表示：飲食店一覧ページ作成
 Route::get('/', [ShopController::class, 'indexShops'])->name('verification.notice');
+// view表示：飲食店詳細ページ
+Route::get('/detail/{shop_id}', [ShopController::class, 'detailShop']);
 
 Route::prefix('/login')->group(function() {
     // view表示：ログインページ
@@ -56,8 +58,6 @@ Route::get('/thanks', [UserController::class, 'indexComplete']);
 Route::middleware(['auth', 'verified'])->group(function() {
     // view表示：マイページ
     Route::get('/mypage', [ShopController::class, 'personal']);
-    // view表示：飲食店詳細ページ
-    Route::get('/detail/{shop_id}', [ShopController::class, 'detailShop']);
 
     Route::prefix('/like')->group(function() {
         // お気に入り追加処理(飲食店一覧ページ)

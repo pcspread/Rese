@@ -10,30 +10,124 @@ all
     background-color: #EEE;
 }
 
-.mypage-section {
-    padding: 100px 75px;
+/* ======================================================================
+shops
+====================================================================== */
+
+/* ========================= title ========================= */
+.detail-section {
+    padding: 32px 39px;
     background-color: #EEE;
 }
 
-.mypage-header {}
 
-.mypage-header__name {
-    padding: 15px;
-    text-align: center;
-    font-size: 22px;
-}
-
-.mypage-content {
+.detail-main {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
+
+.detail-shop {
+    padding-top: 100px;
+    width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+    .detail-shop {
+        margin-top: 215px;
+    }
+}
+
+.shop-title {
+    display: flex;
+    justify-self: left;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.shop-button__back {
+    margin: 0 15px;
+    padding: 0 10px;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 2px 2px 2px #888;
+    background-color: #FFF;
+    text-decoration: none;
+    font-size: 24px;
+}
+
+.shop-button__back:hover {
+    background-color: #333;
+    color: #FFF;
+}
+
+.shop-title__text {
+    font-size: 24px;
+}
+
+.shops-cards {}
+
+.shop-card {
+    width: 400px;
+    margin: 10px 15px 32px;
+}
+
+/* ========================= image ========================= */
+.shop-card__firstView {}
+
+.shop-card__image {
+    width: 100%;
+}
+
+.shop-card__content {}
+
+.shop-card__tags {
+    padding: 24px 0 28px;
+}
+
+.shop-card__tag {}
+
+
+.shop-card__description {}
+
+.shop-card__description-content {}
+
+/* ========================= clicks ========================= */
+.shop-card__clicks {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 8px;
+}
+
+.shop-card__form {}
+
+.shop-card__interest-click {
+    border: none;
+    background-color: #EEE;
+    font-size: 32px;
+    color: #EEE;
+}
+
+.shop-card__interest-click.true {
+    color: #FF0000;
+}
+
+.shop-card__interest-click:hover {
+    cursor: pointer;
+    color: #FF0000;
+}
+
+
+
+/* ===================================================================== */
+
 
 /* ======================================================================
 reserve
 ====================================================================== */
-.mypage-reserve {
+.detail-reserve {
     width: 40%;
-    padding-left: 50px;
 }
 
 .reserve-title {}
@@ -66,31 +160,31 @@ reserve
     font-size: 12px;
 }
 
-.reserve-card__delete-button {
-    border-radius: 45px;
-    border: 3px solid #FFF;
-    background-color: #287ADC;
-    color: #FFF;
-    font-weight: bold;
-    transform: scale(.7);
-}
+.reserve-card__input-group {}
 
-.reserve-card__delete-button:hover {
-    cursor: pointer;
-    transform: scaleX(1.2);
-}
+.reserve-card__input {}
 
-.reserve-card__content {
-    width: 100%;
-}
+.reserve-card__select {}
 
-.reserve-card__item {
+.reserve-card__select-item {}
+
+.reserve-card__select {}
+
+.reserve-card__select-item {}
+
+.reserve-card__input {}
+
+.reserve-card__content {}
+
+.reserve-table {}
+
+.reserve-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.reserve-card__item-title {
+.reserve-title {
     width: 25%;
     text-align: left;
     padding: 5px 0;
@@ -99,7 +193,7 @@ reserve
     color: #FFF;
 }
 
-.reserve-card__item-content {
+.reserve-content {
     width: 75%;
     border: none;
     border-radius: 3px;
@@ -109,111 +203,70 @@ reserve
     color: #FFF;
 }
 
-.reserve-card__item-content::placeholder {
-    color: #FFF;
-}
+.reserve-card__button {}
 
-/* ======================================================================
-shops
-====================================================================== */
-.mypage-shops {
-    width: 60%;
-    padding-left: 50px;
-}
-
-@media screen and (max-width: 768px) {
-    .shops-group {
-        margin-top: 215px;
-    }
-}
-
-.shops-title {}
-
-.shops-title__text {
-    padding: 10px 25px;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-.shops-cards {
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.shop-card {
-    width: 225px;
-    margin: 10px 24px;
-    border-radius: 5px;
-    background-color: #FFF;
-    box-shadow: 2px 2px 2px #888;
-}
-
-/* ========================= image ========================= */
-.shop-card__firstView {
-    border-radius: 5px 5px 0 0;
-}
-
-.shop-card__image {
-    width: 100%;
-    border-radius: 5px 5px 0 0;
-}
-
-.shop-card__content {
-    border-radius: 0 0 5px 5px;
-    padding: 10px;
-}
-
-/* ========================= title ========================= */
-.shop-title {
-    padding-bottom: 5px;
-    font-size: 18px;
-}
-
-.shop-card__tags {}
-
-.shop-card__tag {}
-
-/* ========================= clicks ========================= */
-.shop-card__clicks {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 8px;
-}
-
-.shop-card__detail-click {
-    padding: 5px 15px;
-    border-radius: 5px;
+.reserve-card__button-reserve {
+    border-radius: 45px;
+    border: 3px solid #FFF;
     background-color: #287ADC;
-    text-decoration: none;
     color: #FFF;
+    font-weight: bold;
+    transform: scale(.7);
 }
 
-.shop-card__detail-click:hover {
-    opacity: .5;
-}
-
-.shop-card__form {}
-
-.shop-card__interest-click {
-    border: none;
-    background-color: #FFF;
-    font-size: 32px;
-    color: #EEE;
-}
-
-.shop-card__interest-click.true {
-    color: #FF0000;
-}
-
-.shop-card__interest-click:hover {
+.reserve-card__button-reserve:hover {
     cursor: pointer;
-    color: #FF0000;
+    transform: scaleX(1.2);
 }
 
-/* ========================= add-class ========================= */
-.color {
-    background-color: #FFF;
-}
+
+
+/* =========================================================================================================
+========================================================================================================= */
+
+
+
+
+.detail-sub {}
+
+.detail-rate {}
+
+.detail-rate__item {}
+
+.detail-comment__wrapper {}
+
+.detail-comment__title-wrapper {}
+
+.detail-comment__title {}
+
+.detail-comment__input-group {}
+
+.detail-comment__input-form {}
+
+.detail-comment__input-item {}
+
+.detail-comment__input-title {}
+
+.detail-comment__input {}
+
+.detail-comment__input-item {}
+
+.detail-comment__input-title {}
+
+.detail-comment__input-text {}
+
+.detail-comment__input-item {}
+
+.detail-comment__input-button {}
+
+.detail-comment__display-group {}
+
+.detail-comment__display-item {}
+
+.detail-comment__display-title {}
+
+.detail-comment__display-rates {}
+
+.detail-comment__display-rate {}
+
+.detail-comment__display-content {}
