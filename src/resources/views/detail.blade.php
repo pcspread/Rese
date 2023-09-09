@@ -20,7 +20,7 @@
             <div class="shops-cards">
                 <div class="shop-card">
                     <div class="shop-card__firstView">
-                        <img class="shop-card__image" src="https://dummyimage.com/400x250/000/fff" alt="">
+                        <img class="shop-card__image" src="{{ $shop['photo'] }}" alt="">
                     </div>
                     <div class="shop-card__content">
                         <div class="shop-card__tags">
@@ -54,10 +54,6 @@
     
             <div class="reserve-card">
                 <form class="reserve-form">
-                    <div class="reserve-card__title">
-                        <h3 class="reserve-card__title-text">予約</h3>
-                    </div>
-
                     <div class="reserve-card__input-group">
                         <input class="reserve-card__input" type="date">
                         <select class="reserve-card__select" name="" id="" >
@@ -78,26 +74,25 @@
                             <option value="" class="reserve-card__select-item">7人</option>
                             <option value="" class="reserve-card__select-item">8人</option>
                         </select>
-                        <input class="reserve-card__input" type="number">
                     </div>
 
                     <div class="reserve-card__content">
                         <table class="reserve-table">
                             <tr class="reserve-item">
-                                <th class="reserve-title">Shop</th>
-                                <td class="reserve-content">{{ $shop['name'] }}</td>
+                                <th class="reserve-item__title">Shop</th>
+                                <td class="reserve-item__content">{{ $shop['name'] }}</td>
                             </tr>
                             <tr class="reserve-item">
-                                <th class="reserve-title">Date</th>
-                                <td class="reserve-content">2021-04-01</td>
+                                <th class="reserve-item__title">Date</th>
+                                <td class="reserve-item__content">2021-04-01</td>
                             </tr>
                             <tr class="reserve-item">
-                                <th class="reserve-title">Time</th>
-                                <td class="reserve-content">17:00</td>
+                                <th class="reserve-item__title">Time</th>
+                                <td class="reserve-item__content">17:00</td>
                             </tr>
                             <tr class="reserve-item">
-                                <th class="reserve-title">Number</th>
-                                <td class="reserve-content">1人</td>
+                                <th class="reserve-item__title">Number</th>
+                                <td class="reserve-item__content">1人</td>
                             </tr>
                         </table>
                     </div>
@@ -112,56 +107,72 @@
 
     <div class="detail-sub">
         <div class="detail-rate">
-            <a class="detail-rate__item" href="">★</a>
-            <a class="detail-rate__item" href="">★</a>
-            <a class="detail-rate__item" href="">★</a>
-            <a class="detail-rate__item" href="">★</a>
-            <a class="detail-rate__item" href="">★</a>
-        </div>
-
-        <div class="detail-comment__wrapper">
-            <div class="detail-comment__title-wrapper">
-                <h3 class="detail-comment__title">コメント</h3>
+            <div class="rate-title">
+                <h3 class="rate-title__text">コメント</h3>
             </div>
 
-            <div class="detail-comment__input-group">
-                <form class="detail-comment__input-form" action="">
-                    <!-- 投稿者 -->
-                    <div class="detail-comment__input-item">
-                        <label class="detail-comment__input-title" for="">投稿者</label>
-                        <input class="detail-comment__input" type="text" placeholder="投稿者入力欄">
-                    </div>
-                    <!-- 投稿内容 -->
-                    <div class="detail-comment__input-item">
-                        <label class="detail-comment__input-title" for="">投稿内容</label>
-                        <textarea class="detail-comment__input-text" name="" id="" cols="30" rows="10"  placeholder="投稿内容入力欄"></textarea>
-                    </div>
-                    <!-- 投稿ボタン -->
-                    <div class="detail-comment__input-item">
-                        <button class="detail-comment__input-button">投稿する</button>
-                    </div>
-                </form>
-            </div>
-
-            <div class="detail-comment__display-group">
-                @for ($i = 0; $i < 5; $i++)
-                <div class="detail-comment__display-item">
-                    <h4 class="detail-comment__display-title" for="">投稿者A</h4>
-                    <div class="detail-comment__display-rates">
-                        <a class="detail-comment__display-rate" href="">★</a>
-                        <a class="detail-comment__display-rate" href="">★</a>
-                        <a class="detail-comment__display-rate" href="">★</a>
-                        <a class="detail-comment__display-rate" href="">★</a>
-                        <a class="detail-comment__display-rate" href="">★</a>
-                    </div>
-                    <p class="detail-comment__display-content">
-                        example...................................................................................................................................................................................
-                    </p>
+            <div class="rate-display">
+                <div class="rate-display__title">
+                    <h4 class="rate-display__title-text">評価数選択</h4>
                 </div>
-                @endfor
+                <div class="rate-display__content">
+                    <a class="rate-display__item" href="">★</a>
+                    <a class="rate-display__item" href="">★</a>
+                    <a class="rate-display__item" href="">★</a>
+                    <a class="rate-display__item" href="">★</a>
+                    <a class="rate-display__item" href="">★</a>
+                </div>
+            </div>
+
+            <div class="rate-comment">
+                <div class="rate-comment__top-group">
+                    <div class="rate-comment__top-title">
+                        <h4 class="rate-comment__top-title__text">コメント入力</h4>
+                    </div>
+    
+                    <div class="rate-comment__input-group">
+                        <form class="rate-comment__input-form" action="">
+                            <!-- 投稿者 -->
+                            <div class="rate-comment__input-item">
+                                <label class="rate-comment__input-title" for="comment_name">〔投稿者〕</label>
+                                <input class="rate-comment__input" id="comment_name" type="text" placeholder="投稿者入力欄">
+                            </div>
+                            <!-- 投稿内容 -->
+                            <div class="rate-comment__input-item">
+                                <label class="rate-comment__input-title" for="comment_content">〔投稿内容〕</label>
+                                <textarea class="rate-comment__input-text" id="comment_content"  name="" cols="30" rows="10"  placeholder="投稿内容入力欄"></textarea>
+                            </div>
+                            <!-- 投稿ボタン -->
+                            <div class="rate-comment__input-item">
+                                <button class="rate-comment__input-button">投稿する</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="rate-comment__content-group">
+                    <div class="rate-comment__content-title">
+                        <h4 class="rate-comment__content-title__text">コメント一覧</h4>
+                    </div>
+
+                    @for ($i = 0; $i < 5; $i++)
+                    <div class="rate-comment__content-item">
+                        <h4 class="rate-comment__content-title" for="">投稿者A</h4>
+                        <div class="rate-comment__content-rates">
+                            <a class="rate-comment__content-rate" href="">★</a>
+                            <a class="rate-comment__content-rate" href="">★</a>
+                            <a class="rate-comment__content-rate" href="">★</a>
+                            <a class="rate-comment__content-rate" href="">★</a>
+                            <a class="rate-comment__content-rate" href="">★</a>
+                        </div>
+                        <p class="rate-comment__display-content">
+                            example...................................................................................................................................................................................
+                        </p>
+                    </div>
+                    @endfor
+                </div>
             </div>
         </div>
-        
     </div>
 </div>
 @endsection
