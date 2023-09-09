@@ -6,11 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 // Model読込
 use App\Models\Interest;
+use App\Models\Reserve;
 
 class Shop extends Model
 {
     use HasFactory;
 
+    // 編集可能なカラムの設定
     protected $fillable = [
         'name',
         'region',
@@ -62,20 +64,42 @@ class Shop extends Model
     }
 
     /**
-     * リレーション設定
-     * @param $id ユーザー情報
+     * user_idとshop_idに適合したinterestレコードの取得
+     * @param $user_id ユーザーID
+     * @param $shop_id 店舗ID
      * @return object
      */
     public function interest($user_id, $shop_id)
     {
-        // $text =  $this->hasOne(Interest::class)->where('user_id', $id);
-        $text = Interest::where([
+        // 各idに適合したレコードの取得
+        $record = Interest::where([
             'user_id' => $user_id,
             'shop_id' => $shop_id
         ])->first();
 
-        if (!empty($text)) {
-            return $text;
+        // レコードがある場合の処理
+        if (!empty($record)) {
+            return $record;
+        }
+    }
+
+    /**
+     * user_idとshop_idに適合したreserveレコードの取得
+     * @param $user_id ユーザーID
+     * @param $shop_id 店舗ID
+     * @return object
+     */
+    public function reserve($user_id, $shop_id)
+    {
+        // 各idに適合したレコードの取得
+        $record = Reserve::where([
+            'user_id' => $user_id,
+            'shop_id' => $shop_id
+        ])->first();
+
+        // レコードがある場合の処理
+        if (!empty($record)) {
+            return $record;
         }
     }
 }

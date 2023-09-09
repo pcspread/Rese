@@ -86,23 +86,22 @@ shops
 
 .shop-card__content {}
 
-.shop-card__tags {
-    padding: 24px 0 28px;
+/* ========================= top-group ========================= */
+.shop-card__top-group {
+    display: flex;
+    justify-content: left;
+    align-items: center;
 }
+
+.shop-card__tags {}
 
 .shop-card__tag {}
 
-
-.shop-card__description {}
-
-.shop-card__description-content {}
-
-/* ========================= clicks ========================= */
 .shop-card__clicks {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 8px;
+    padding-left: 15px;
 }
 
 .shop-card__form {}
@@ -111,7 +110,7 @@ shops
     border: none;
     background-color: #EEE;
     font-size: 32px;
-    color: #EEE;
+    color: #CCC;
 }
 
 .shop-card__interest-click.true {
@@ -122,6 +121,11 @@ shops
     cursor: pointer;
     color: #FF0000;
 }
+
+/* ========================= description ========================= */
+.shop-card__description {}
+
+.shop-card__description-content {}
 
 /* ======================================================================
 reserve
@@ -140,7 +144,7 @@ reserve
 @media screen and (max-width: 768px) {
     .detail-reserve {
         width: 100%;
-        margin-left: 0;
+        margin: 52px 0;
     }
 }
 
@@ -184,6 +188,12 @@ reserve
 }
 
 .reserve-card__select-item {}
+
+.reserve-card__input-error {
+    color: #FF8888;
+    font-weight: bold;
+    padding-bottom: 15px;
+}
 
 .reserve-card__content {
     width: 85%;
