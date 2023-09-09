@@ -22,25 +22,37 @@
                     <div class="shop-card__firstView">
                         <img class="shop-card__image" src="{{ $shop['photo'] }}" alt="">
                     </div>
+
                     <div class="shop-card__content">
-                        <div class="shop-card__tags">
-                            <span class="shop-card__tag">#{{ $shop['region'] }}</span>
-                            <span class="shop-card__tag">#{{ $shop['genre'] }}</span>
+                        <div class="shop-card__top-group">
+                            <div class="shop-card__tags">
+                                <span class="shop-card__tag">#{{ $shop['region'] }}</span>
+                                <span class="shop-card__tag">#{{ $shop['genre'] }}</span>
+                            </div>
+
+                            @if (Auth::check())
+                            <div class="shop-card__clicks">
+                                <form class="shop-card__form" action="/detail/like/{{ $shop['id'] }}" method="POST">
+                                @csrf
+                                    @if (empty($shop->interest(Auth::id(), $shop['id'])))
+                                    <input class="shop-card__interest-click" type="submit" value="♥">
+
+                                    @else
+                                    <form class="shop-card__interest-click" action="/detail/like/{{ $shop['id'] }}" method="POST">
+                                    @method('PATCH')
+                                        @csrf
+                                            <input class="shop-card__interest-click true" type="submit" value="♥">
+                                        </form>
+                                    @endif
+                                </form>
+                            </div>
+                            @endif
                         </div>
+
                         <div class="shop-card__description">
                             <p class="shop-card__description-content">
                                 {{ $shop['description'] }}
                             </p>
-                        </div>
-                        <div class="shop-card__clicks">
-                            <form class="shop-card__form" action="/detail/like/" method="POST">
-                            @csrf
-                                <form class="shop-card__interest-click" action="/detail/like/" method="POST">
-                                @method('PATCH')
-                                @csrf
-                                    <input class="shop-card__interest-click true" type="submit" value="♥">
-                                </form>
-                            </form>
                         </div>
                     </div>
                 </div>
@@ -53,27 +65,35 @@
             </div>
     
             <div class="reserve-card">
-                <form class="reserve-form">
+                <form class="reserve-form" action="/detail/{{ $shop['id'] }}" method="POST">
+                @csrf 
                     <div class="reserve-card__input-group">
-                        <input class="reserve-card__input" type="date">
-                        <select class="reserve-card__select" name="" id="" >
-                            <option value="" class="reserve-card__select-item">17:00</option>
-                            <option value="" class="reserve-card__select-item">18:00</option>
-                            <option value="" class="reserve-card__select-item">19:00</option>
-                            <option value="" class="reserve-card__select-item">20:00</option>
-                            <option value="" class="reserve-card__select-item">21:00</option>
-                            <option value="" class="reserve-card__select-item">22:00</option>
+                        <input class="reserve-card__input" type="date" name="date">
+                        @error('date')
+                        <div class="reserve-card__input-error">
+                            ※{{ $errors->first('date') }}
+                        </div>
+                        @enderror
+                        <select class="reserve-card__select" name="time">
+                            @for ($i = 17; $i <= 22; $i++)
+                            <option class="reserve-card__select-item" value="{{ $i }}" @if ((int)old('time') === $i) selected @endif>{{ $i }}:00</option>
+                            @endfor
                         </select>
-                        <select class="reserve-card__select" name="" id="" >
-                            <option value="" class="reserve-card__select-item">1人</option>
-                            <option value="" class="reserve-card__select-item">2人</option>
-                            <option value="" class="reserve-card__select-item">3人</option>
-                            <option value="" class="reserve-card__select-item">4人</option>
-                            <option value="" class="reserve-card__select-item">5人</option>
-                            <option value="" class="reserve-card__select-item">6人</option>
-                            <option value="" class="reserve-card__select-item">7人</option>
-                            <option value="" class="reserve-card__select-item">8人</option>
+                        @error('time')
+                        <div class="reserve-card__input-error">
+                            ※{{ $errors->first('time') }}
+                        </div>
+                        @enderror
+                        <select class="reserve-card__select" name="number">
+                            @for ($s = 1; $s <= 5; $s++)
+                            <option class="reserve-card__select-item" value="{{ $s }}" @if ((int)old('number') === $s) selected @endif>{{ $s }}人</option>
+                            @endfor
                         </select>
+                        @error('number')
+                        <div class="reserve-card__input-error">
+                            ※{{ $errors->first('number') }}
+                        </div>
+                        @enderror
                     </div>
 
                     <div class="reserve-card__content">
@@ -84,15 +104,25 @@
                             </tr>
                             <tr class="reserve-item">
                                 <th class="reserve-item__title">Date</th>
-                                <td class="reserve-item__content">2021-04-01</td>
+                                <td class="reserve-item__content">
+                                    {{ $shop->reserve(Auth::id(), $shop['id'])['date'] ?? '予約無' }}
+                                </td>
                             </tr>
                             <tr class="reserve-item">
                                 <th class="reserve-item__title">Time</th>
-                                <td class="reserve-item__content">17:00</td>
+                                <td class="reserve-item__content">
+                                    {{ $shop->reserve(Auth::id(), $shop['id'])['time'] ?? '予約無' }}
+                                </td>
                             </tr>
                             <tr class="reserve-item">
                                 <th class="reserve-item__title">Number</th>
-                                <td class="reserve-item__content">1人</td>
+                                <td class="reserve-item__content">
+                                    @if (empty($shop->reserve(Auth::id(), $shop['id'])['number']))
+                                        予約無
+                                    @else
+                                        {{ "{$shop->reserve(Auth::id(), $shop['id'])['number']}人" }}
+                                    @endif
+                                </td>
                             </tr>
                         </table>
                     </div>

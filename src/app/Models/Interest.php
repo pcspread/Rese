@@ -12,6 +12,7 @@ class Interest extends Model
     // タイムスタンプを無効に
     public $timestamps = false;
 
+    // 編集可能なカラムの設定
     protected $fillable = [
         'user_id',
         'shop_id'

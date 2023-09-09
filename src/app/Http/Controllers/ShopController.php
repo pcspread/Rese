@@ -6,8 +6,11 @@ use Illuminate\Http\Request;
 // Model読込
 use App\Models\Shop;
 use App\Models\Interest;
+use App\Models\Reserve;
 // Auth読込
 use Illuminate\Support\Facades\Auth;
+// Request読込
+use App\Http\Requests\ReserveRequest;
 
 class ShopController extends Controller
 {
@@ -163,4 +166,60 @@ class ShopController extends Controller
 
         return view('detail', compact('shop'));
     }
+    
+    /**
+     * お気に入り追加処理(飲食店詳細ページ)
+     * @param int $id 店舗ID
+     * @return redirect
+     */
+    public function addLikeDetail($id) {
+        // お気に入り追加処理
+        Interest::create([
+            'user_id' => Auth::id(),
+            'shop_id' => $id
+        ]);
+
+        return redirect("/detail/{$id}");
+    }
+
+    /**
+     * お気に入り削除処理(飲食店詳細ページ)
+     * @param int $id 店舗ID
+     * @return redirect
+     */
+    public function cancelLikeDetail($id) {
+        // お気に入り追加処理
+        Interest::where([
+            'user_id' => Auth::id(),
+            'shop_id' => $id
+        ])->delete();
+
+        return redirect("/detail/{$id}");
+    }
+
+    /**
+     * 予約追加処理
+     * @param object $request
+     * @return redirect
+     */
+    public function updateReserve(ReserveRequest $request, $shop_id)
+    {
+        // フォーム情報を取得
+        $form = $request->only(['date', 'time', 'number']);
+
+        // 追加するデータを用意
+        $reserve = [
+            'user_id' => Auth::id(),
+            'shop_id' => $shop_id,
+            'date' => $form['date'],
+            'time' => "{$form['time']}:00:00",
+            'number' => $form['number']
+        ];
+
+        // 追加処理
+        Reserve::create($reserve);
+
+        return redirect("/detail/{$reserve['shop_id']}");
+    }
+    
 }

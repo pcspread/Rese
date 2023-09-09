@@ -65,8 +65,19 @@ Route::middleware(['auth', 'verified'])->group(function() {
         // お気に入り削除処理(飲食店一覧ページ)
         Route::patch('/{id}', [ShopController::class, 'cancelLike']);
     });
+
     // お気に入り削除処理(マイページ)
-    Route::patch('mypage/like/{id}', [ShopController::class, 'cancelLikeMy']);
+    Route::patch('/mypage/like/{id}', [ShopController::class, 'cancelLikeMy']);
+
+    Route::prefix('/detail')->group(function() {
+        // お気に入り追加処理(飲食店詳細ページ)
+        Route::post('/like/{id}', [ShopController::class, 'addLikeDetail']);
+        // お気に入り削除処理(飲食店詳細ページ)
+        Route::patch('/like/{id}', [ShopController::class, 'cancelLikeDetail']);
+    });
+
+    // 予約追加処理
+    Route::post('/detail/{shop_id}', [ShopController::class, 'updateReserve']);
     
     // view表示：ログアウトページ
     Route::post('/logout', [UserController::class, 'logout']);
