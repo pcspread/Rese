@@ -22,32 +22,82 @@
                 <h2 class="reserve-title__text">予約状況</h2>
             </div>
 
-            <div class="reserve-card">
-                <form class="reserve-form">
+            <div class="reserve-cards">
+                @foreach ($reserves as $reserve)
+                <div class="reserve-card">
                     <div class="reserve-card__title">
                         <h3 class="reserve-card__title-text">予約</h3>
-                        <button class="reserve-card__delete-button">×</button>
+
+                        <form class="reserve-form__delete" action="/mypage/reserve/{{ $reserve->shop['id'] }}" method="POST">
+                        @method('DELETE')
+                        @csrf
+                            <button class="reserve-card__delete-button" onclick="return confirmDel()">×</button>
+                        </form>
                     </div>
 
                     <div class="reserve-card__content">
-                        <div class="reserve-card__item">
-                            <label class="reserve-card__item-title">Shop</label>
-                            <input class="reserve-card__item-content" type="text" name="shop" placeholder="入力欄">
-                        </div>
-                        <div class="reserve-card__item">
-                            <label class="reserve-card__item-title">Date</label>
-                            <input class="reserve-card__item-content" type="text" name="date" placeholder="入力欄">
-                        </div>
-                        <div class="reserve-card__item">
-                            <label class="reserve-card__item-title">Time</label>
-                            <input class="reserve-card__item-content" type="text" name="time" placeholder="入力欄">
-                        </div>
-                        <div class="reserve-card__item">
-                            <label class="reserve-card__item-title">Number</label>
-                            <input class="reserve-card__item-content" type="text" name="number" placeholder="入力欄">
-                        </div>
+                        <form class="reserve-form__" action="/mypage/reserve/{{ $reserve->shop['id'] }}" method="POST">
+                        @method('PATCH')
+                        @csrf
+                            <!-- shop -->
+                            <div class="reserve-card__item">
+                                <div class="reserce-card__item-group">
+                                    <label class="reserve-card__item-title">Shop</label>
+                                    <p class="reserve-card__item-content">{{ $reserve->shop['name'] }}</p>
+                                </div>
+                            </div>
+                            <!-- date -->
+                            <div class="reserve-card__item">
+                                <div class="reserce-card__item-group">
+                                    <label class="reserve-card__item-title">Date</label>
+                                    <input class="reserve-card__item-content" type="date" name="date" value="{{ $reserve['date'] }}" placeholder="入力欄">
+                                </div>
+                                @error('date')
+                                <div class="reserve-card__input-error">
+                                    ※{{ $errors->first('date'); }}
+                                </div>
+                                @enderror
+                            </div>
+                            <!-- time -->
+                            <div class="reserve-card__item">
+                                <div class="reserce-card__item-group">
+                                    <label class="reserve-card__item-title">Time</label>
+                                    <select class="reserve-card__item-content" name="time">
+                                        @for ($i = 17; $i <= 22; $i++)
+                                        <option class="reserve-card__item-content__option" value="{{ $i }}" @if ($reserve['time'] === "{$i}:00:00") selected @endif>{{ $i }}:00</option>
+                                        @endfor
+                                    </select>
+                                </div>
+                                @error('time')
+                                <div class="reserve-card__input-error">
+                                    ※{{ $errors->first('time'); }}
+                                </div>
+                                @enderror
+                            </div>
+                            <!-- number -->
+                            <div class="reserve-card__item">
+                                <div class="reserce-card__item-group">
+                                    <label class="reserve-card__item-title">Number</label>
+                                    <select class="reserve-card__item-content" name="number">
+                                        @for ($s = 1; $s <= 5; $s++)
+                                        <option class="reserve_card__item-content__option" value="{{ $s }}" @if ((int)$reserve['number'] === $s) selected @endif>
+                                            {{ $s }}
+                                        </option>    
+                                        @endfor
+                                    </select>
+                                </div>
+                                @error('number')
+                                <div class="reserve-card__input-error">
+                                    ※{{ $errors->first('number'); }}
+                                </div>
+                                @enderror
+                            </div>
+                            <!-- button -->
+                            <button class="reserve-card__update-button" onclick="return confirmUpdate()">更新</button>
+                        </form>
                     </div>
-                </form>
+                </div>
+                @endforeach
             </div>
         </div>
 

@@ -15,6 +15,12 @@ all
     background-color: #EEE;
 }
 
+@media screen and (max-width: 960px) {
+    .mypage-section {
+        padding: 100px 15px;
+    }
+}
+
 .mypage-header {}
 
 .mypage-header__name {
@@ -28,12 +34,25 @@ all
     justify-content: space-between;
 }
 
+@media screen and (max-width: 960px) {
+    .mypage-content {
+        display: block;
+    }
+}
+
 /* ======================================================================
 reserve
 ====================================================================== */
 .mypage-reserve {
     width: 40%;
     padding-left: 50px;
+}
+
+@media screen and (max-width: 960px) {
+    .mypage-reserve {
+        padding-left: 0;
+        width: 100%;
+    }
 }
 
 .reserve-title {}
@@ -43,7 +62,16 @@ reserve
     font-size: 16px;
 }
 
+.reserve-cards {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
 .reserve-card {
+    width: 400px;
+    margin: 10px;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 2px 2px 3px #888;
@@ -66,6 +94,27 @@ reserve
     font-size: 12px;
 }
 
+.reserve-card__button-group {
+    display: flex;
+    align-items: center;
+}
+
+.reserve-card__update-button {
+    width: 100%;
+    margin-top: 15px;
+    padding: 5px 0;
+    border: none;
+    border-radius: 8px;
+    box-sizing: 0 0 3px 3px #FFF;
+    background-color: #FFF;
+    font-weight: bold;
+}
+
+.reserve-card__update-button:hover {
+    opacity: .7;
+    cursor: pointer;
+}
+
 .reserve-card__delete-button {
     border-radius: 45px;
     border: 3px solid #FFF;
@@ -77,17 +126,30 @@ reserve
 
 .reserve-card__delete-button:hover {
     cursor: pointer;
-    transform: scaleX(1.2);
+    transform: scaleX(1.1);
 }
 
 .reserve-card__content {
     width: 100%;
 }
 
-.reserve-card__item {
+.reserce-card__item-group {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.reserve-card__item-buttons {
+    display: flex;
+    align-items: center;
+    padding-top: 15px;
+    justify-content: left;
+}
+
+@media screen and (max-width: 348px) {
+    .reserce-card__item-group {
+        display: block;
+    }
 }
 
 .reserve-card__item-title {
@@ -109,6 +171,23 @@ reserve
     color: #FFF;
 }
 
+@media screen and (max-width: 348px) {
+    .reserve-card__item-title {
+        /* padding-right: 32px; */
+        display: block;
+    }
+
+    .reserve-card__item-content {
+        display: block;
+        padding-left: 15px;
+    }
+}
+
+.reserve-card__input-error {
+    color: #FF8888;
+    font-weight: bold;
+}
+
 .reserve-card__item-content::placeholder {
     color: #FFF;
 }
@@ -121,9 +200,10 @@ shops
     padding-left: 50px;
 }
 
-@media screen and (max-width: 768px) {
-    .shops-group {
-        margin-top: 215px;
+@media screen and (max-width: 960px) {
+    .mypage-shops {
+        width: 100%;
+        padding-left: 0;
     }
 }
 
@@ -135,11 +215,23 @@ shops
     font-weight: bold;
 }
 
+@media screen and (max-width: 960px) {
+    .shops-title__text {
+        padding: 10px;
+    }
+}
+
 .shops-cards {
     display: flex;
     justify-content: left;
     align-items: center;
     flex-wrap: wrap;
+}
+
+@media screen and (max-width: 960px) {
+    .shops-cards {
+        /* justify-content: center; */
+    }
 }
 
 .shop-card {

@@ -25,6 +25,8 @@ use App\Http\Controllers\ShopController;
 Route::get('/', [ShopController::class, 'indexShops'])->name('verification.notice');
 // view表示：飲食店詳細ページ
 Route::get('/detail/{shop_id}', [ShopController::class, 'detailShop']);
+// 前ページへ戻る処理
+Route::get('/back', [ShopController::class, 'backPage']);
 
 Route::prefix('/login')->group(function() {
     // view表示：ログインページ
@@ -77,7 +79,20 @@ Route::middleware(['auth', 'verified'])->group(function() {
     });
 
     // 予約追加処理
-    Route::post('/detail/{shop_id}', [ShopController::class, 'updateReserve']);
+    Route::post('/detail/{shop_id}', [ShopController::class, 'addReserve']);
+
+    
+    // view表示
+    Route::get('/done', [ShopController::class, 'doneReserve']);
+    
+    // 予約削除処理
+    Route::delete('/mypage/reserve/{shop_id}', [ShopController::class, 'deleteReserve']);
+    
+    // 予約更新処理
+    Route::patch('/mypage/reserve/{shop_id}', [ShopController::class, 'updateReserve']);
+
+    // 評価追加処理
+    Route::post('/rate/{shop_id}', [ShopController::class, 'storeRate']);
     
     // view表示：ログアウトページ
     Route::post('/logout', [UserController::class, 'logout']);

@@ -3,14 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+// Request読込
+use App\Http\Requests\ReserveRequest;
+use App\Http\Requests\RateRequest;
 // Model読込
 use App\Models\Shop;
 use App\Models\Interest;
 use App\Models\Reserve;
+use App\Models\Rate;
 // Auth読込
 use Illuminate\Support\Facades\Auth;
-// Request読込
-use App\Http\Requests\ReserveRequest;
 
 class ShopController extends Controller
 {
@@ -102,10 +104,23 @@ class ShopController extends Controller
      */
     public function personal()
     {
-        // お気に入り店舗のIDを取得
+        // お気に入り店舗情報を取得
         $interests = Interest::where('user_id', Auth::id())->orderBy('shop_id', 'asc')->get();
 
-        return view('mypage', compact('interests'));
+        // 予約情報を取得
+        $reserves = Reserve::where('user_id', Auth::id())->get();
+
+        return view('mypage', compact('interests', 'reserves'));
+    }
+
+    /**
+     * 前ページへ戻る処理
+     * @param void
+     * @return back
+     */
+    public function backPage()
+    {
+        return redirect('/');
     }
 
     /**
@@ -164,7 +179,10 @@ class ShopController extends Controller
         // 店舗情報の取得
         $shop = Shop::find($id);
 
-        return view('detail', compact('shop'));
+        // コメント情報の取得
+        $rates = Rate::where('shop_id', $id)->get();
+
+        return view('detail', compact(['shop', 'rates']));
     }
     
     /**
@@ -202,7 +220,7 @@ class ShopController extends Controller
      * @param object $request
      * @return redirect
      */
-    public function updateReserve(ReserveRequest $request, $shop_id)
+    public function addReserve(ReserveRequest $request, $shop_id)
     {
         // フォーム情報を取得
         $form = $request->only(['date', 'time', 'number']);
@@ -219,7 +237,87 @@ class ShopController extends Controller
         // 追加処理
         Reserve::create($reserve);
 
-        return redirect("/detail/{$reserve['shop_id']}");
+        return redirect('/done')->with('shop_id', $shop_id);
+    }
+
+    /**
+     * view表示
+     * @param void
+     * @return view
+     */
+    public function doneReserve()
+    {
+        return view('done');
+    }
+
+    /**
+     * 予約削除処理
+     * @param int $shop_id
+     * @return redirect
+     */
+    public function deleteReserve($shop_id)
+    {
+        // 予約している店舗名を取得
+        $name = Shop::find($shop_id)->name;
+
+        // 論理削除処理
+        Reserve::where('shop_id', $shop_id)->delete();
+
+        return redirect('/mypage')->with('success', "「{$name}」の予約を削除しました");
+    }
+
+    /**
+     * 予約更新処理
+     * @param object $request
+     * @param int $shop_id
+     * @return redirect
+     */
+    public function updateReserve(ReserveRequest $request, $shop_id)
+    {
+        // フォーム情報の取得
+        $form = $request->only(['date', 'time', 'number']);
+
+        // 更新情報を用意
+        $reserve = [
+            'date' => $form['date'],
+            'time' => "{$form['time']}:00:00",
+            'number' => $form['number']
+        ];
+
+        // 更新する店名を取得
+        $name = Shop::find($shop_id)->name;
+
+        // 更新処理
+        Reserve::where([
+            'user_id' => Auth::id(),
+            'shop_id' => $shop_id
+        ])->update($reserve);
+
+        return redirect('/mypage')->with('success', "「{$name}」の内容を更新しました");
+    }
+
+    /**
+     * 評価追加処理
+     * @param object $request
+     * @return redirect
+     */
+    public function storeRate(RateRequest $request)
+    {
+        // フォーム情報の取得
+        $form = $request->only(['number', 'name', 'comment', 'shop_id']);
+
+        $rate = [
+            'user_id' => Auth::id(),
+            'shop_id' => $form['shop_id'],
+            'number' => $form['number'],
+            'name' => $form['name'],
+            'comment' => $form['comment']
+        ];
+
+        // 追加処理
+        Rate::create($rate);
+
+        return redirect("/detail/{$rate['shop_id']}")->with('success', 'コメントを投稿しました');
     }
     
 }
