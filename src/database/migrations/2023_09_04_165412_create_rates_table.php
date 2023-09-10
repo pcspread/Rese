@@ -19,6 +19,7 @@ class CreateRatesTable extends Migration
                 $table->foreignId('user_id')->constrained()->cascadeOnDelete();
                 $table->foreignId('shop_id')->constrained()->cascadeOnDelete();
                 $table->integer('number')->unsigned();
+                $table->string('name', 255)->nullable();
                 $table->string('comment', 255)->nullable();
                 $table->timestamps();
             });

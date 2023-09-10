@@ -11,19 +11,16 @@ all
 }
 
 .detail-section {
-    padding: 32px 39px;
+    padding: 32px 80px;
     background-color: #EEE;
-}
-
-.detail-main {
-    width: 100%;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 @media screen and (max-width: 768px) {
-    .detail-main {
-        display: block;
+    .detail-section {
+        padding: 32px 15px;
     }
 }
 
@@ -31,8 +28,8 @@ all
 shops
 ====================================================================== */
 .detail-shop {
-    width: 55%;
-    padding-top: 100px;
+    width: 40%;
+    padding-top: 65px;
 }
 
 @media screen and (max-width: 768px) {
@@ -51,7 +48,6 @@ shops
 }
 
 .shop-button__back {
-    margin: 0 15px;
     padding: 0 10px;
     border: none;
     border-radius: 3px;
@@ -64,9 +60,11 @@ shops
 .shop-button__back:hover {
     background-color: #333;
     color: #FFF;
+    cursor: pointer;
 }
 
 .shop-title__text {
+    padding-left: 15px;
     font-size: 24px;
 }
 
@@ -133,7 +131,6 @@ reserve
 .detail-reserve {
     width: 45%;
     height: 532px;
-    margin-left: 52px;
     padding: 15px 0;
     border-radius: 5px;
     box-shadow: 2px 2px 2px #888;
@@ -203,6 +200,15 @@ reserve
     background-color: #289ADC;
 }
 
+.reserve-card__content-description {
+    display: none;
+}
+
+.reserve-card__content-description__text {
+    padding: 0 0 24px;
+    color: #FFF;
+}
+
 .reserve-table {
     width: 100%;
     table-layout: auto;
@@ -255,15 +261,22 @@ reserve
     opacity: .7;
 }
 
-/* =============== sub */
-.detail-sub {
-    margin: 32px 0;
+/* ======================================================================
+rate
+====================================================================== */
+
+.detail-rate {
+    width: 45%;
     padding: 15px;
     border-radius: 5px;
     background-color: #60CCAA;
 }
 
-.detail-rate {}
+@media screen and (max-width: 768px) {
+    .detail-rate {
+        width: 100%;
+    }
+}
 
 .rate-title {
     padding: 8px 0 15px;
@@ -272,28 +285,6 @@ reserve
 .rate-title__text {
     font-size: 24px;
     color: #FFF;
-}
-
-.rate-display {
-    padding: 10px 0 0;
-}
-
-.rate-display__title {}
-
-.rate-display__title-text {
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 3px;
-}
-
-.rate-display__content {
-    padding: 5px 15px;
-}
-
-.rate-display__item {
-    padding: 5px;
-    text-decoration: none;
-    color: #0000FF;
 }
 
 .rate-comment {}
@@ -313,7 +304,9 @@ reserve
 
 .rate-comment__input-form {}
 
-.rate-comment__input-item {}
+.rate-comment__input-item {
+    padding-bottom: 15px;
+}
 
 .rate-comment__input-title {
     display: block;
@@ -341,7 +334,11 @@ reserve
     box-shadow: 0 0 1px 1px #888;
 }
 
-.rate-comment__input-item {}
+.rate-comment__input-error {
+    padding-left: 10px;
+    color: #FF0000;
+    font-weight: bold;
+}
 
 .rate-comment__input-button {
     margin: 5px 5px 32px 15px;
