@@ -85,10 +85,20 @@ reserve
     justify-content: space-between;
     align-items: center;
     padding-bottom: 15px;
-    padding-left: 50px;
+}
+
+.reserve-card__title-top {
+    display: flex;
+    align-items: center;
+}
+
+.reserve-card__title-icon {
+    font-size: 18px;
+    fill: #FFF;
 }
 
 .reserve-card__title-text {
+    padding-left: 24px;
     color: #FFF;
     font-weight: normal;
     font-size: 12px;

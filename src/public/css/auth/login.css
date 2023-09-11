@@ -81,7 +81,10 @@ content
     align-items: center;
 }
 
-.login-icon__image {}
+.login-icon__instance {
+    font-size: 28px;
+    fill: #666;
+}
 
 .login-input {
     width: 90%;

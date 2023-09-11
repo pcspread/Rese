@@ -81,7 +81,10 @@ content
     align-items: center;
 }
 
-.register-icon__image {}
+.register-icon__instance {
+    font-size: 28px;
+    fill: #666;
+}
 
 .register-input {
     width: 90%;

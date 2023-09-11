@@ -117,6 +117,10 @@ search
 
 .search-icon__content {}
 
+.search-icon__content-instance {
+    fill: #CCC;
+}
+
 .search-input {}
 
 .search-input__box {
