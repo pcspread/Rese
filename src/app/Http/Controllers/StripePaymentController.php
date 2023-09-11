@@ -17,7 +17,6 @@ class StripePaymentController extends Controller
      */
     public function indexStripe($reserve_id)
     {   
-        
         // 予約情報の取得
         $reserve = Reserve::find($reserve_id);
         
@@ -42,7 +41,7 @@ class StripePaymentController extends Controller
                     'description' => "(内訳)¥1,000✖{$reserve['number']}名様　　　　　　　　　　　　　　　　　　　決済後、飲食店のコメント欄にコメントいただけるようになります。",
                 ],
             ],
-            'quantity'    => 1,
+            'quantity'    => $reserve['number'],
         ];
 
         // APIにシークレットキーをセット
