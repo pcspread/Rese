@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+.payment-section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    opacity: .8;
+    z-index: 15;
+}
+
+.payment-desctiption {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50vw;
+    font-size: 24px;
+    text-align: center;
+    color: #DDD;
+    z-index: 20;
+}

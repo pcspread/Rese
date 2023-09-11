@@ -4,8 +4,7 @@ use Illuminate\Support\Facades\Route;
 // Controller読込
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ShopController;
-// AuthFacades読込
-// use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\StripePaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,7 +58,7 @@ Route::get('/thanks', [UserController::class, 'indexComplete']);
 // 認証済ユーザーのルート
 Route::middleware(['auth', 'verified'])->group(function() {
     // view表示：マイページ
-    Route::get('/mypage', [ShopController::class, 'personal']);
+    Route::get('/mypage', [ShopController::class, 'personal'])->name('mypage');
 
     Route::prefix('/like')->group(function() {
         // お気に入り追加処理(飲食店一覧ページ)
@@ -93,6 +92,16 @@ Route::middleware(['auth', 'verified'])->group(function() {
 
     // 評価追加処理
     Route::post('/rate/{shop_id}', [ShopController::class, 'storeRate']);
+
+    // stripe決済後の処理
+    Route::get('/mypage/payment/close', [StripePaymentController::class, 'closeCheckout'])->name('closeCheckout');
+
+    // stripe決済処理
+    Route::get('/mypage/payment/{reserve_id}', [StripePaymentController::class, 'indexStripe']);
+
+
+    // stripe決済処理
+    // Route::get('/mypage/payment/checkout', [StripePaymentController::class, 'checkout']);
     
     // view表示：ログアウトページ
     Route::post('/logout', [UserController::class, 'logout']);
