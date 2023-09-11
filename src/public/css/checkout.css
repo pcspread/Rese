@@ -1,0 +1,97 @@
+@charset "UTF-8";
+
+.pay-section {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50vw;
+    padding: 15px;
+    border: 3px double #888;
+    border-radius: 5px;
+    background-color: #FFF;
+    z-index: 20;
+}
+
+.pay-title {
+    font-size: 21px;
+    text-align: center;
+}
+
+.pay-title__text {}
+
+.pay-button__back {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    width: 24px;
+    height: 24px;
+    line-height: 20px;
+    margin: 3px;
+    border-radius: 45px;
+    border: 1px solid #888;
+    background-color: #FFF;
+    color: #888;
+    text-decoration: none;
+}
+
+.pay-button__back:hover {
+    transform: scale(1.2);
+}
+
+.pay-content {
+    margin: 15px 0;
+    padding: 15px;
+    border-top: 1px solid #888;
+    border-bottom: 1px solid #CCC;
+}
+
+.pay-table {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.pay-item {}
+
+.pay-head {
+    width: 30%;
+    padding: 5px;
+    text-align: left;
+}
+
+.pay-data {
+    width: 70%;
+    text-align: left;
+}
+
+.pay-button {}
+
+.pay-button__checkout {
+    display: block;
+    width: 100%;
+    margin: 15px auto;
+    padding: 10px 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 2px 2px #888;
+    background-color: #287ADC;
+    color: #FFF;
+    text-align: center;
+    text-decoration: none;
+}
+
+.pay-button__checkout:hover {
+    opacity: .7;
+}
+
+.mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #333;
+    opacity: .8;
+    z-index: 15;
+}

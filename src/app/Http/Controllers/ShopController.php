@@ -182,7 +182,13 @@ class ShopController extends Controller
         // コメント情報の取得
         $rates = Rate::where('shop_id', $id)->get();
 
-        return view('detail', compact(['shop', 'rates']));
+        // 決済後の店舗情報(deleted_at)の取得
+        $delete = Reserve::onlyTrashed()->where([
+            'user_id' => Auth::id(),
+            'shop_id' => $id
+        ])->first();
+
+        return view('detail', compact(['shop', 'rates', 'delete']));
     }
     
     /**
@@ -261,7 +267,7 @@ class ShopController extends Controller
         $name = Shop::find($shop_id)->name;
 
         // 論理削除処理
-        Reserve::where('shop_id', $shop_id)->delete();
+        Reserve::where('shop_id', $shop_id)->forceDelete();
 
         return redirect('/mypage')->with('success', "「{$name}」の予約を削除しました");
     }
@@ -319,5 +325,4 @@ class ShopController extends Controller
 
         return redirect("/detail/{$rate['shop_id']}")->with('success', 'コメントを投稿しました');
     }
-    
 }

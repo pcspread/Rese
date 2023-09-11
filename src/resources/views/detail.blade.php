@@ -139,14 +139,14 @@
     @endif
 
     <div class="detail-rate">
-        @if (Auth::check())
+        @if (Auth::check() && !empty($delete))
         <div class="rate-title">
             <h3 class="rate-title__text">コメント</h3>
         </div>
         @endif
 
         <div class="rate-comment">
-            @if (Auth::check())
+            @if (Auth::check() && !empty($delete))
             <div class="rate-comment__top-group">
                 <div class="rate-comment__top-title">
                     <h4 class="rate-comment__top-title__text">コメント入力</h4>

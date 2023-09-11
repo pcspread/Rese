@@ -110,7 +110,7 @@ reserve
 }
 
 .reserve-card__update-button {
-    width: 100%;
+    width: 45%;
     margin-top: 15px;
     padding: 5px 0;
     border: none;
@@ -120,7 +120,21 @@ reserve
     font-weight: bold;
 }
 
-.reserve-card__update-button:hover {
+.reserve-card__pay-button {
+    width: 45%;
+    margin: 15px 0 0 15px;
+    padding: 5px 0;
+    border: none;
+    border-radius: 8px;
+    box-sizing: 0 0 3px 3px #FFF;
+    background-color: #FFF;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+}
+
+.reserve-card__update-button:hover,
+.reserve-card__pay-button:hover {
     opacity: .7;
     cursor: pointer;
 }

@@ -95,7 +95,10 @@
                                 @enderror
                             </div>
                             <!-- button -->
-                            <button class="reserve-card__update-button" onclick="return confirmUpdate()">更新</button>
+                            <div class="reserve-card__button-group">
+                                <button class="reserve-card__update-button" onclick="return confirmUpdate()">更新</button>
+                                <a class="reserve-card__pay-button" href="/mypage/payment/{{ $reserve['id'] }}" onclick="return confirmPay()">決済する</a>
+                            </div>
                         </form>
                     </div>
                 </div>
