@@ -26,13 +26,6 @@ all
     background-color: #FFF;
 }
 
-@media screen and (max-width: 480px) {
-    .done-wrapper {
-        width: 80%;
-        padding: 32px;
-    }
-}
-
 .done-title {}
 
 .done-title__content {
@@ -56,4 +49,14 @@ all
 .done-button__back:hover {
     cursor: pointer;
     background-color: #0000FF;
+}
+
+/* ======================================================================
+メディアクエリ
+====================================================================== */
+@media screen and (max-width: 480px) {
+    .done-wrapper {
+        width: 80%;
+        padding: 32px;
+    }
 }

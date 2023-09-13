@@ -93,6 +93,9 @@ class ShopController extends Controller
         // お気に入り情報を取得
         $interests = Interest::where('user_id', Auth::id());
 
+        // 詳細ページで「戻るボタン」を押した時用にsessionに値を格納
+        session()->put('page', 'shops');
+
         return view('shops', compact(['shops', 'regions', 'genres', 'interests']));
     }
     
@@ -110,6 +113,9 @@ class ShopController extends Controller
         // 予約情報を取得
         $reserves = Reserve::where('user_id', Auth::id())->get();
 
+        // 詳細ページで「戻るボタン」を押した時用にsessionに値を格納
+        session()->put('page', 'mypage');
+
         return view('mypage', compact('interests', 'reserves'));
     }
 
@@ -120,7 +126,18 @@ class ShopController extends Controller
      */
     public function backPage()
     {
-        return redirect('/');
+        // 前ページ情報の取得
+        $page = session()->get('page');
+
+        if ($page === 'shops') {
+            // 前ページが飲食店一覧の場合
+            return redirect('/');
+        } elseif ($page = 'mypage') {
+            // 前ページがマイページの場合
+            return redirect('/mypage');
+        } else {
+            return back();
+        }
     }
 
     /**

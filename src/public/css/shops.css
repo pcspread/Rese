@@ -36,24 +36,6 @@ search
     align-items: center;
 }
 
-@media screen and (max-width: 768px) {
-    .search-group {
-        padding: 100px 5% 15px;
-        margin-left: 0;
-    }
-
-    .search-wrapper {
-        width: 100%;
-        max-width: 250px;
-        margin: 0 auto;
-        display: block;
-    }
-
-    .search-item {
-        justify-content: left;
-    }
-}
-
 /* ========================= select ========================= */
 .search-title {
     padding: 0 10px 0 5px;
@@ -62,12 +44,6 @@ search
 
 .search-menu {
     border-right: 1px solid #DDD;
-}
-
-@media screen and (max-width: 768px) {
-    .search-menu {
-        border-right: none;
-    }
 }
 
 .search-menu__icon {
@@ -147,13 +123,6 @@ search
     transform: scaleX(1.2);
 }
 
-@media screen and (max-width: 768px) {
-    .search-input__box {
-        width: 100%;
-
-    }
-}
-
 /* ========================= add-class ========================= */
 .open {
     display: flex;
@@ -173,12 +142,6 @@ shops
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-}
-
-@media screen and (max-width: 768px) {
-    .shops-group {
-        margin-top: 215px;
-    }
 }
 
 .shop-card {
@@ -250,4 +213,38 @@ shops
 .shop-card__interest-click:hover {
     cursor: pointer;
     color: #FF0000;
+}
+
+/* ======================================================================
+メディアクエリ
+====================================================================== */
+@media screen and (max-width: 768px) {
+    .search-group {
+        padding: 100px 5% 15px;
+        margin-left: 0;
+    }
+
+    .search-wrapper {
+        width: 100%;
+        max-width: 250px;
+        margin: 0 auto;
+        display: block;
+    }
+
+    .search-item {
+        justify-content: left;
+    }
+
+    .search-menu {
+        border-right: none;
+    }
+
+    .search-input__box {
+        width: 100%;
+
+    }
+
+    .shops-group {
+        margin-top: 215px;
+    }
 }

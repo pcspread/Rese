@@ -26,13 +26,6 @@ all
     background-color: #FFF;
 }
 
-@media screen and (max-width: 480px) {
-    .logout-wrapper {
-        width: 80%;
-        padding: 32px;
-    }
-}
-
 .logout-title {}
 
 .logout-title__content {
@@ -56,4 +49,15 @@ all
 .logout-button__login:hover {
     cursor: pointer;
     background-color: #0000FF;
+}
+
+/* ======================================================================
+メディアクエリ
+====================================================================== */
+
+@media screen and (max-width: 480px) {
+    .logout-wrapper {
+        width: 80%;
+        padding: 32px;
+    }
 }

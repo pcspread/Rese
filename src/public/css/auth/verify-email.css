@@ -1,8 +1,5 @@
 @charset "UTF-8";
 
-/* ======================================================================
-all
-====================================================================== */
 /* ========================= email ========================= */
 .email-section {
     width: 100%;
@@ -19,16 +16,6 @@ all
     box-shadow: 3px 3px 2px #AAA;
     border-radius: 5px;
     background-color: #FFF;
-}
-
-@media screen and (max-width: 768px) {
-    .email-section {
-        padding: 100px 0;
-    }
-
-    .main {
-        height: auto;
-    }
 }
 
 .email__group {}
@@ -75,4 +62,17 @@ all
 .resend-email__button:hover {
     cursor: pointer;
     opacity: .8;
+}
+
+/* ======================================================================
+メディアクエリ
+====================================================================== */
+@media screen and (max-width: 768px) {
+    .email-section {
+        padding: 100px 0;
+    }
+
+    .main {
+        height: auto;
+    }
 }
