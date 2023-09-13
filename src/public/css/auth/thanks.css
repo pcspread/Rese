@@ -26,13 +26,6 @@ all
     background-color: #FFF;
 }
 
-@media screen and (max-width: 480px) {
-    .thanks-wrapper {
-        width: 80%;
-        padding: 32px;
-    }
-}
-
 .thanks-title {}
 
 .thanks-title__content {
@@ -56,4 +49,14 @@ all
 .thanks-button__login:hover {
     cursor: pointer;
     background-color: #0000FF;
+}
+
+/* ======================================================================
+メディアクエリ
+====================================================================== */
+@media screen and (max-width: 480px) {
+    .thanks-wrapper {
+        width: 80%;
+        padding: 32px;
+    }
 }

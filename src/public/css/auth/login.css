@@ -24,18 +24,6 @@ all
     border-radius: 5px;
 }
 
-@media screen and (max-width: 480px) {
-    .login-wrapper {
-        width: 80%;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .login-wrapper {
-        top: 50%;
-    }
-}
-
 /* ======================================================================
 title
 ====================================================================== */
@@ -119,4 +107,14 @@ content
 .login-button__submit:hover {
     cursor: pointer;
     background-color: #0000FF;
+}
+
+/* ======================================================================
+メディアクエリ
+====================================================================== */
+@media screen and (max-width: 480px) {
+    .login-wrapper {
+        width: 80%;
+        top: 50%;
+    }
 }

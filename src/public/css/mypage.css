@@ -15,12 +15,6 @@ all
     background-color: #EEE;
 }
 
-@media screen and (max-width: 960px) {
-    .mypage-section {
-        padding: 100px 15px;
-    }
-}
-
 .mypage-header {}
 
 .mypage-header__name {
@@ -34,25 +28,12 @@ all
     justify-content: space-between;
 }
 
-@media screen and (max-width: 960px) {
-    .mypage-content {
-        display: block;
-    }
-}
-
 /* ======================================================================
 reserve
 ====================================================================== */
 .mypage-reserve {
     width: 40%;
     padding-left: 50px;
-}
-
-@media screen and (max-width: 960px) {
-    .mypage-reserve {
-        padding-left: 0;
-        width: 100%;
-    }
 }
 
 .reserve-title {}
@@ -170,12 +151,6 @@ reserve
     justify-content: left;
 }
 
-@media screen and (max-width: 348px) {
-    .reserce-card__item-group {
-        display: block;
-    }
-}
-
 .reserve-card__item-title {
     width: 25%;
     text-align: left;
@@ -195,18 +170,6 @@ reserve
     color: #FFF;
 }
 
-@media screen and (max-width: 348px) {
-    .reserve-card__item-title {
-        /* padding-right: 32px; */
-        display: block;
-    }
-
-    .reserve-card__item-content {
-        display: block;
-        padding-left: 15px;
-    }
-}
-
 .reserve-card__input-error {
     color: #FF8888;
     font-weight: bold;
@@ -224,13 +187,6 @@ shops
     padding-left: 50px;
 }
 
-@media screen and (max-width: 960px) {
-    .mypage-shops {
-        width: 100%;
-        padding-left: 0;
-    }
-}
-
 .shops-title {}
 
 .shops-title__text {
@@ -239,23 +195,11 @@ shops
     font-weight: bold;
 }
 
-@media screen and (max-width: 960px) {
-    .shops-title__text {
-        padding: 10px;
-    }
-}
-
 .shops-cards {
     display: flex;
     justify-content: left;
     align-items: center;
     flex-wrap: wrap;
-}
-
-@media screen and (max-width: 960px) {
-    .shops-cards {
-        /* justify-content: center; */
-    }
 }
 
 .shop-card {
@@ -332,4 +276,47 @@ shops
 /* ========================= add-class ========================= */
 .color {
     background-color: #FFF;
+}
+
+
+/* ======================================================================
+メディアクエリ
+====================================================================== */
+@media screen and (max-width: 960px) {
+    .mypage-section {
+        padding: 100px 15px;
+    }
+
+    .mypage-content {
+        display: block;
+    }
+
+    .mypage-reserve {
+        padding-left: 0;
+        width: 100%;
+    }
+
+    .mypage-shops {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .shops-title__text {
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 348px) {
+    .reserce-card__item-group {
+        display: block;
+    }
+
+    .reserve-card__item-title {
+        display: block;
+    }
+
+    .reserve-card__item-content {
+        display: block;
+        padding-left: 15px;
+    }
 }

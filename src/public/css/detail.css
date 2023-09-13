@@ -18,24 +18,12 @@ all
     flex-wrap: wrap;
 }
 
-@media screen and (max-width: 768px) {
-    .detail-section {
-        padding: 32px 15px;
-    }
-}
-
 /* ======================================================================
 shops
 ====================================================================== */
 .detail-shop {
     width: 40%;
     padding-top: 65px;
-}
-
-@media screen and (max-width: 768px) {
-    .detail-shop {
-        width: 100%;
-    }
 }
 
 /* ========================= title ========================= */
@@ -136,13 +124,6 @@ reserve
     box-shadow: 2px 2px 2px #888;
     background-color: #287ADC;
     position: relative;
-}
-
-@media screen and (max-width: 768px) {
-    .detail-reserve {
-        width: 100%;
-        margin: 52px 0;
-    }
 }
 
 .reserve-title {
@@ -272,12 +253,6 @@ rate
     background-color: #60CCAA;
 }
 
-@media screen and (max-width: 768px) {
-    .detail-rate {
-        width: 100%;
-    }
-}
-
 .rate-title {
     padding: 8px 0 15px;
 }
@@ -394,4 +369,26 @@ add-class
 ====================================================================== */
 .color {
     background-color: #FFF;
+}
+
+/* ======================================================================
+メディアクエリ
+====================================================================== */
+@media screen and (max-width: 768px) {
+    .detail-section {
+        padding: 32px 15px;
+    }
+
+    .detail-shop {
+        width: 100%;
+    }
+
+    .detail-reserve {
+        width: 100%;
+        margin: 52px 0;
+    }
+
+    .detail-rate {
+        width: 100%;
+    }
 }

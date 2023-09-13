@@ -12,7 +12,7 @@
 <div class="detail-section" id="header">
     <div class="detail-shop">
         <div class="shop-title">
-            <a class="shop-button__back" href="/"><</a>
+            <a class="shop-button__back" href="/back"><</a>
             <h1 class="shop-title__text">{{ $shop['name']}}</h1>
         </div>
     
