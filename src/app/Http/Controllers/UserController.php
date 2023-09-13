@@ -57,11 +57,17 @@ class UserController extends Controller
         if (Auth::attempt($form)) {
             // セッションID生成
             $request->session()->regenerate();
+
             // ユーザー名取得
-            $name = User::where('email', $form['email'])->first()->name;
-            // セッションに格納
-            session()->put('name', $name);
-            return redirect('/mypage');
+            $user = User::where('email', $form['email'])->first();
+            // メールアドレスがオーナー用メールアドレスだった場合
+            if ($form['email'] === $user['email']) {
+                return redirect('/owner');
+            } else {
+                // セッションに格納
+                session()->put('name', $user['name']);
+                return redirect('/mypage');
+            }
         }
 
         return back()->withErrors([

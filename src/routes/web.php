@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\StripePaymentController;
+use App\Http\Controllers\OwnerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -98,6 +99,9 @@ Route::middleware(['auth', 'verified'])->group(function() {
 
     // stripe決済処理
     Route::get('/mypage/payment/{reserve_id}', [StripePaymentController::class, 'indexStripe']);
+
+    // view表示：オーナー用メインページ
+    Route::get('/owner', [OwnerController::class, 'OwnerIndexMain']);
 
 
     // stripe決済処理
