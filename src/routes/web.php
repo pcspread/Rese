@@ -103,6 +103,10 @@ Route::middleware(['auth', 'verified'])->group(function() {
     Route::prefix('/owner')->group(function () {
         // view表示：オーナー用メインページ
         Route::get('/', [OwnerController::class, 'OwnerIndexMain']);
+        // view表示：オーナー用飲食店追加ページ
+        Route::get('/shop/create', [OwnerController::class, 'OwnerIndexCreateShop']);
+        // view表示：オーナー用飲食店修正ページ
+        Route::get('/shop/edit', [OwnerController::class, 'OwnerIndexEditShop']);
     });
 
 

@@ -88,6 +88,28 @@ class OwnerController extends Controller
             }
         }
 
-        return view('owner.owner', compact(['shops', 'regions', 'genres']));
+        return view('owner.shops', compact(['shops', 'regions', 'genres']));
+    }
+
+    /**
+     * view表示
+     * オーナー用飲食店追加ページ
+     * @param void
+     * @return view
+     */
+    public function OwnerIndexCreateShop()
+    {
+        return view('owner.create_shop');
+    }
+
+    /**
+     * view表示
+     * オーナー用飲食店修正ページ
+     * @param void
+     * @return view
+     */
+    public function OwnerIndexEditShop()
+    {
+        return view('owner.edit_shop');
     }
 }

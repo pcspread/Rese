@@ -106,7 +106,7 @@
 .header-data__buton {
     box-sizing: border-box;
     width: 100%;
-    height: 15vh;
+    height: 8vh;
     border: none;
     font-size: 16px;
     font-weight: bold;
@@ -198,7 +198,7 @@ search
     background-color: #FFF;
     border-radius: 0 0 5px 5px;
     box-shadow: 0 3px 2px 1px #555;
-    /* transform: translate(-45px, 3px); */
+    transform: translate(-57px, 3px);
 }
 
 .search-menu__record.genre {
@@ -320,6 +320,10 @@ main
         border-right: none;
     }
 
+    .search-menu__list {
+        transform: translate(0, 3px);
+    }
+
     .search-input__box {
         width: 100%;
 
@@ -343,5 +347,9 @@ main
 
     .header-item {
         grid-template-rows: 15vh;
+    }
+
+    .header-data__buton {
+        height: 15vh;
     }
 }
