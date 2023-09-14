@@ -4,43 +4,41 @@
 <link rel="stylesheet" href="{{ asset('css/owner/owner.css') }}">
 @endsection
 
+@section('js')
+<script src="{{ asset('js/owner.js') }}"></script>
+@endsection
+
 @section('content')
 <div class="home-section">
-    <table class="home-table__top">
-        <div class="table-wrapper">
-            <tr class="table-top__item">
-                <th class="table-top__title" rowspan="2"></th>
-                <th class="table-top__title">飲食店名</th>
-                <th class="table-top__title">エリア</th>
-                <th class="table-top__title">ジャンル</th>
-                <th class="table-top__title" colspan="2" rowspan="2"></th>
-            </tr>
-            <tr class="table-top__item">
-                <th class="home-item__title" colspan="3"></th>
-            </tr>
-        </div>
-    </table>
+    <div class="list-wrapper">
+        <form class="list-form">
+            <div class="list-item__top">
+                <div class="list-title1">店舗画像</div>
+                <div class="list-title2">飲食店名</div>
+                <div class="list-title3">エリア</div>
+                <div class="list-title4">ジャンル</div>
+                <div class="list-title5">説明</div>
+                <div class="list-title6"></div>
+            </div>
 
-    <table class="home-table__bottom">
-        @for ($i = 0; $i < 20; $i++)
-        <div class="table-wrapper">
-            <form class="table-form">
-                <tr class="table-bottom__item">
-                    <td class="table-bottom__content" rowspan="2"></td>
-                    <td class="table-bottom__content">仙人</td>
-                    <td class="table-bottom__content">東京</td>
-                    <td class="table-bottom__content">寿司</td>
-                    <td class="table-bottom__content" colspan="2" rowspan="2">
-                        <button class="table-bottom__button--edit">修正</button>
-                        <button class="table-buttom__button--delete" type="button">削除</button>
-                    </td>
-                </tr>
-                <tr class="table-bottom__item">
-                    <td class="table-bottom__content" colspan="3">説明・・・説明・・・説明・・・説明・・・説明・・・説明・・・説明・・・説明・・・説明・・・説明・・・説明・・・説明・・・説明・・・説明・・・説明・・・説明・・・</td>
-                </tr>
-            </form>
-        </div>
-        @endfor
-    </table>
+            <div class="list-item__bottom__wrapper">
+                @foreach ($shops as $shop)
+                <div class="list-item__bottom">
+                    <div class="list-content1">
+                        <img class="list-content1__image" src="{{ $shop['photo'] }}" alt="shop-image">
+                    </div>
+                    <div class="list-content2">{{ $shop['name'] }}</div>
+                    <div class="list-content3">{{ $shop['region'] }}</div>
+                    <div class="list-content4">{{ $shop['genre'] }}</div>
+                    <div class="list-content5">{{ $shop['description'] }}</div>
+                    <div class="list-content6">
+                        <button class="list-button edit">修正</button>
+                        <button class="list-button delete" type="button">削除</button>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </form>
+    </div>
 </div>
 @endsection

@@ -2,4 +2,346 @@
 
 /* ==========================================================================================
 ========================================================================================== */
-/* =========================  ========================= */
+
+/* ========================= header ========================= */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 9vh;
+    perspective: 440px;
+    transition: .5s all ease-in-out;
+    z-index: 5;
+}
+
+.header-title {
+    padding: 3px;
+    background-color: #000;
+    text-align: center;
+}
+
+
+.header-title__text {
+    font-size: 32px;
+    color: #FFF;
+    text-decoration: none;
+}
+
+/* ========================= nav ========================= */
+.header-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #EEE;
+    transform: translateY(-300%);
+    transition: .1s all ease-in-out;
+    z-index: 15;
+}
+
+.header-item {
+    display: grid;
+    grid-template-rows: 8vh;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    background-color: #EEE;
+    z-index: 10;
+}
+
+.header-data.search {
+    grid-column: 1/2;
+    grid-row: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid #888;
+    font-weight: bold;
+}
+
+.header-data.shop {
+    grid-column: 2/3;
+    grid-row: 1/1;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    border-right: 1px solid #888;
+    font-weight: bold;
+}
+
+.header-data.mail {
+    grid-column: 3/4;
+    grid-row: 1/1;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    border-right: 1px solid #888;
+    font-weight: bold;
+}
+
+.header-data.setting {
+    grid-column: 4/5;
+    grid-row: 1/1;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    border-right: 1px solid #888;
+    font-weight: bold;
+}
+
+.header-data.logout {
+    grid-column: 5/6;
+    grid-row: 1/1;
+    border-bottom: 1px solid #888;
+}
+
+.header-data:hover {
+    color: #FFF;
+    cursor: pointer;
+    background-color: #888;
+}
+
+.header-data__buton {
+    box-sizing: border-box;
+    width: 100%;
+    height: 15vh;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.header-data__buton:hover {
+    cursor: pointer;
+    border: none;
+    background-color: #888;
+    color: #FFF;
+}
+
+/* ======================================================================
+search
+====================================================================== */
+.header-search {
+    display: none;
+}
+
+.mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    opacity: .7;
+}
+
+.search-group {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 3px;
+    background-color: #EEE;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+    border-radius: 0 0 15px 0;
+}
+
+.search-wrapper {
+    padding: 5px;
+    display: flex;
+    justify-content: left;
+    background-color: #FFF;
+    border-radius: 5px;
+}
+
+.search-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ========================= select ========================= */
+.search-title {
+    padding: 0 10px 0 5px;
+    font-weight: bold;
+}
+
+.search-menu {
+    border-right: 1px solid #DDD;
+    z-index: 15;
+}
+
+.search-menu__icon {
+    padding: 5px;
+    transform: translateY(5px), rotate(90deg);
+    font-weight: bold;
+    text-shadow: 1px 0 0 #CCC;
+    color: #CCC;
+}
+
+.search-menu__icon:hover {
+    cursor: pointer;
+    transform: scaleX(2);
+}
+
+.search-menu__list {
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    border-top: none;
+    background-color: #FFF;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 3px 2px 1px #555;
+    /* transform: translate(-45px, 3px); */
+}
+
+.search-menu__record.genre {
+    z-index: 10;
+}
+
+.search-menu__record {
+    width: 85px;
+    height: 40px;
+    list-style: none;
+    line-height: 40px;
+    padding-left: 5px;
+    text-decoration: none;
+}
+
+.search-menu__record:hover {
+    cursor: pointer;
+    background-color: #EEE;
+}
+
+/* ========================= input-group(icon) ========================= */
+.search__input-group {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 5px;
+}
+
+.search-icon__content {}
+
+.search-icon__content-instance {
+    margin-right: 5px;
+    fill: #CCC;
+}
+
+.search-input {}
+
+.search-input__box {
+    border: none;
+    color: #777;
+    font-weight: bold;
+}
+
+/* ========================= button ========================= */
+.search__button-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-not {}
+
+.search-not__button {
+    display: block;
+    margin: 0 5px;
+    padding: 0 3px;
+    border: 3px solid #777;
+    border-radius: 45px;
+    background-color: #FFF;
+    font-weight: bold;
+    color: #777;
+}
+
+.search-not__button:hover {
+    cursor: pointer;
+    transform: scaleX(1.2);
+}
+
+.search-close__link {
+    display: block;
+    margin: 0 5px;
+    padding: 0 3px;
+    border: 3px solid #777;
+    border-radius: 45px;
+    background-color: #FFF;
+    font-weight: bold;
+    color: #777;
+}
+
+.search-close__link:hover {
+    cursor: pointer;
+    transform: scaleX(1.2);
+}
+
+/* ========================= add-class ========================= */
+.open {
+    display: flex;
+}
+
+.color {
+    color: #AAA;
+}
+
+/* ======================================================================
+main
+====================================================================== */
+.main {}
+
+/* ======================================================================
+メディアクエリ
+====================================================================== */
+@media screen and (max-width: 768px) {
+    .header-nav {
+        height: auto;
+    }
+
+    .search-wrapper {
+        width: 150px;
+        max-width: 250px;
+        margin: 0 auto;
+        display: block;
+    }
+
+    .search-item {
+        display: block;
+    }
+
+    .search-menu {
+        border-right: none;
+    }
+
+    .search-input__box {
+        width: 100%;
+
+    }
+}
+
+@media screen and (max-width: 280px) {
+    .header {
+        height: 15vh;
+    }
+
+    .header-title {
+        height: 100%;
+    }
+
+
+    .header-title__text {
+        height: 100%;
+        line-height: 15vh;
+    }
+
+    .header-item {
+        grid-template-rows: 15vh;
+    }
+}

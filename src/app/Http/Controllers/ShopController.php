@@ -67,6 +67,9 @@ class ShopController extends Controller
             // キーワードがエリアのみ空の場合
             } elseif (empty($area) && !empty($genre)) {
                 $shops = Shop::GenreSearch($genre)->AllSearch($all)->get();
+            // キーワードが両方無い場合
+            } elseif (empty($area) && empty($genre)) {
+                $shops = Shop::AllSearch($all)->get();
             }
         // 検索キーワード(all)が無い場合
         } else {
