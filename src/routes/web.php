@@ -100,8 +100,10 @@ Route::middleware(['auth', 'verified'])->group(function() {
     // stripe決済処理
     Route::get('/mypage/payment/{reserve_id}', [StripePaymentController::class, 'indexStripe']);
 
-    // view表示：オーナー用メインページ
-    Route::get('/owner', [OwnerController::class, 'OwnerIndexMain']);
+    Route::prefix('/owner')->group(function () {
+        // view表示：オーナー用メインページ
+        Route::get('/', [OwnerController::class, 'OwnerIndexMain']);
+    });
 
 
     // stripe決済処理
