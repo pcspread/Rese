@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('css/owner/app.css') }}" />
     @yield('css')
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/owner/app.js') }}" defer></script>
     @yield('js')
 </head>
 <body>
@@ -45,9 +45,11 @@
                             <div class="search-menu__icon">〉</div>
                             <ul class="search-menu__list">
                                 <li class="search-menu__record area">全て</li>
+                                @if (!empty($regions))
                                 @foreach ($regions as $region)
                                 <li class="search-menu__record area">{{ $region }}</li>
                                 @endforeach
+                                @endif
                             </ul>
                         </div>
                     </div>
@@ -58,9 +60,11 @@
                             <div class="search-menu__icon">〉</div>
                             <ul class="search-menu__list">
                                 <li class="search-menu__record genre">全て</li>
+                                @if (!empty($genres ))
                                 @foreach ($genres as $genre)
                                 <li class="search-menu__record genre">{{ $genre }}</li>
                                 @endforeach
+                                @endif
                             </ul>
                         </div>
                     </div>
