@@ -49,7 +49,7 @@
     color: #FFF;
 }
 
-.shop-button.store {
+.shop-button.home {
     background-color: #FF5555;
 }
 
@@ -58,6 +58,11 @@
     border: none;
     background-color: #888;
     color: #FFF;
+}
+
+.shop-error {
+    color: #FF0000;
+    font-weight: bold;
 }
 
 /* ===========================================================================

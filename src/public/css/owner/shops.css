@@ -12,10 +12,10 @@ list-item__top
 .list-form {}
 
 .list-item__top {
-    /* position: sticky;
+    position: sticky;
     top: 9vh;
     left: 0;
-    right: 0; */
+    right: 0;
     height: 12vh;
     display: flex;
     justify-content: center;
@@ -34,8 +34,13 @@ list-item__top
 
 .list-title__child {
     height: 4vh;
-    box-sizing: content-box;
+    box-sizing: border-box;
     border-right: 2px solid #888;
+    border-bottom: 2px solid #888;
+}
+
+.list-title__child:last-child {
+    border-bottom: none;
 }
 
 .list-title.two {

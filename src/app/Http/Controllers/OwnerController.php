@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 // Model読込
 use App\Models\Shop;
+// Request読込
+use App\Http\Requests\ShopRequest;
 
 class OwnerController extends Controller
 {
@@ -103,6 +105,23 @@ class OwnerController extends Controller
     }
 
     /**
+     * create処理
+     * オーナー用飲食店追加処理
+     * @param object $request
+     * @return redirect
+     */
+    public function OwnerStoreShop(ShopRequest $request)
+    {
+        // フォーム情報の取得
+        $form = $request->only('name', 'region', 'genre', 'photo', 'description');
+
+        // create処理
+        Shop::create($form);
+
+        return redirect('/owner/shop/create')->with('success', '飲食店情報を追加しました');
+    }
+
+    /**
      * view表示
      * オーナー用飲食店修正ページ
      * @param void
@@ -111,5 +130,27 @@ class OwnerController extends Controller
     public function OwnerIndexEditShop()
     {
         return view('owner.edit_shop');
+    }
+
+    /**
+     * view表示
+     * オーナー用メール送信ページ
+     * @param void
+     * @param view
+     */
+    public function OwnerIndexMail()
+    {
+        return view('owner.mail');
+    }
+
+    /**
+     * view表示
+     * オーナー用管理者設定ページ
+     * @param void
+     * @return view
+     */
+    public function OwnerIndexSetting()
+    {
+        return view('owner.setting');
     }
 }
