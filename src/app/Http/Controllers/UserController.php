@@ -60,8 +60,8 @@ class UserController extends Controller
 
             // ユーザー名取得
             $user = User::where('email', $form['email'])->first();
-            // メールアドレスがオーナー用メールアドレスだった場合
-            if ($form['email'] === $user['email']) {
+            // パスワードがオーナー用パスワードだった場合
+            if ($form['password'] === config('owner.owner_pass')) {
                 return redirect('/owner');
             } else {
                 // セッションに格納
