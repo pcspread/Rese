@@ -199,3 +199,16 @@ function clearSearch() {
     });
 }
 clearSearch();
+
+
+/**
+ * コメントを非表示にする
+ */
+function displayNone() {
+    const comment = document.querySelector('.header-comment');
+
+    setTimeout(function () {
+        comment.style.display = 'none';
+    }, 3500);
+}
+displayNone();

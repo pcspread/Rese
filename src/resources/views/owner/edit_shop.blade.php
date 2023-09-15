@@ -13,7 +13,7 @@
     <div class="shop-input">
         <div class="shop-item">
             <label class="search-title" for="name">飲食店名</label>
-            <input class="search-content" id="name" type="text" name="name" value="{{ old('name') }}" placeholder="入力欄">
+            <input class="search-content" id="name" type="text" name="name" value="{{ old('name') }}" placeholder="入力欄" autofocus>
         </div>
         <div class="shop-error"></div>
         <div class="shop-item">
@@ -28,12 +28,12 @@
         <div class="shop-error"></div>
         <div class="shop-item">
             <label class="search-title" for="photo">画像</label>
-            <input class="search-content" id="photo" type="text" name="photo" placeholder="入力欄">
+            <input class="search-content" id="photo" type="text" name="url" placeholder="入力欄">
         </div>
         <div class="shop-error"></div>
         <div class="shop-item">
             <label class="search-title" for="description">説明</label>
-            <input class="search-content" id="description" type="text" name="description" value="{{ old('description') }}" placeholder="入力欄">
+            <textarea class="search-content" name="description" id="description" maxlength="255" placeholder="入力欄">{{ old('description') }}</textarea>
         </div>
         <div class="shop-error"></div>
         <div class="shop-item">

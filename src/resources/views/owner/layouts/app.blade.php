@@ -91,7 +91,16 @@
             </div>
             <div class="mask"></div>
         </div>
+
+        @if (session()->has('success'))
+        <div class="header-comment">
+            <div class="header-comment__success">
+                {{ session('success') }}
+            </div>
+        </div>
+        @endif
     </header>
+
 
     <main class="main">
         @yield('content')

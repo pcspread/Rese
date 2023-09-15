@@ -105,8 +105,14 @@ Route::middleware(['auth', 'verified'])->group(function() {
         Route::get('/', [OwnerController::class, 'OwnerIndexMain']);
         // view表示：オーナー用飲食店追加ページ
         Route::get('/shop/create', [OwnerController::class, 'OwnerIndexCreateShop']);
+        // create処理：オーナー用飲食店追加処理
+        Route::post('/shop/create', [OwnerController::class, 'OwnerStoreShop']);
         // view表示：オーナー用飲食店修正ページ
         Route::get('/shop/edit', [OwnerController::class, 'OwnerIndexEditShop']);
+        // view表示：オーナー用メール送信ページ
+        Route::get('/mail', [OwnerController::class, 'OwnerIndexMail']);
+        // view表示：オーナー用管理者設定ページ
+        Route::get('/setting', [OwnerController::class, 'OwnerIndexSetting']);
     });
 
 
