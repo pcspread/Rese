@@ -33,10 +33,10 @@ class UserSeeder extends Seeder
 
         // オーナーデータ作成
         $owner = [
-            'name' => 'owner',
-            'email' => "owner@owner.com",
+            'name' => 'owner1111',
+            'email' => "owner1111@owner.com",
             'email_verified_at' => Carbon::now(),
-            'password' => bcrypt('owner1111'),
+            'password' => bcrypt('owner2222'),
             'remember_token' => bcrypt(bin2hex(random_bytes(32))),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
