@@ -13,13 +13,11 @@ class CreateMessagesTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('information')) {
-            Schema::create('information', function (Blueprint $table) {
+        if (!Schema::hasTable('messages')) {
+            Schema::create('messages', function (Blueprint $table) {
                 $table->id();
                 $table->string('title', 191);
                 $table->string('content', 255);
-                $table->string('photo', 255)->nullable();
-                $table->datetime('send_at');
                 $table->timestamp('created_at')->useCurrent()->nullable();
             });
         }

@@ -34,6 +34,8 @@
 
 .email-error {
     min-height: 15px;
+    color: #FF0000;
+    font-weight: bold;
 }
 
 .email-button {

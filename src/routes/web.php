@@ -100,18 +100,25 @@ Route::middleware(['auth', 'verified'])->group(function() {
     // stripe決済処理
     Route::get('/mypage/payment/{reserve_id}', [StripePaymentController::class, 'indexStripe']);
 
+    // オーナー用ページ
     Route::prefix('/owner')->group(function () {
-        // view表示：オーナー用メインページ
+        // view表示：メインページ
         Route::get('/', [OwnerController::class, 'OwnerIndexMain']);
-        // view表示：オーナー用飲食店追加ページ
+        // view表示：飲食店追加ページ
         Route::get('/shop/create', [OwnerController::class, 'OwnerIndexCreateShop']);
-        // create処理：オーナー用飲食店追加処理
+        // create処理：飲食店追加処理
         Route::post('/shop/create', [OwnerController::class, 'OwnerStoreShop']);
-        // view表示：オーナー用飲食店修正ページ
-        Route::get('/shop/edit', [OwnerController::class, 'OwnerIndexEditShop']);
-        // view表示：オーナー用メール送信ページ
+        // view表示：飲食店修正ページ
+        Route::get('/shop/edit/{id}', [OwnerController::class, 'OwnerIndexEditShop']);
+        // update処理：飲食店更新処理
+        Route::patch('/shop/edit/{id}', [OwnerController::class, 'OwnerUpdateShop']);
+        // delete：飲食店削除処理
+        Route::delete('/owner/shop/delete/{id}', [OwnerController::class, 'OwnerDeleteShop']);
+        // view表示：メール送信ページ
         Route::get('/mail', [OwnerController::class, 'OwnerIndexMail']);
-        // view表示：オーナー用管理者設定ページ
+        // メール送信処理
+        Route::post('/mail', [OwnerController::class, 'OwnerSendMail']);
+        // view表示：管理者設定ページ
         Route::get('/setting', [OwnerController::class, 'OwnerIndexSetting']);
     });
 

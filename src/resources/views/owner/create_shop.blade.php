@@ -47,7 +47,7 @@
 
             <div class="shop-item">
                 <label class="search-title" for="photo">画像</label>
-                <input class="search-content" id="photo" type="url" name="photo" placeholder="入力欄">
+                <input class="search-content" id="photo" type="url" name="photo" value="{{ old('photo') }}" placeholder="入力欄">
             </div>
             <div class="shop-error">
                 @error('photo')

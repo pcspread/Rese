@@ -5,14 +5,23 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 // Model読込
 use App\Models\Shop;
+use App\Models\User;
 // Request読込
 use App\Http\Requests\ShopRequest;
+use App\Http\Requests\MessageRequest;
+// Mail読込
+use Illuminate\Support\Facades\Mail;
+use App\Mail\OwnerMail;
+// Carbon読込
+use Carbon\Carbon;
+// Auth読込
+use Illuminate\Support\Facades\Auth;
 
 class OwnerController extends Controller
 {
     /**
      * view表示
-     * オーナー用メインページ
+     * メインページ
      * @param void
      * @return view
      */
@@ -95,7 +104,7 @@ class OwnerController extends Controller
 
     /**
      * view表示
-     * オーナー用飲食店追加ページ
+     * 飲食店追加ページ
      * @param void
      * @return view
      */
@@ -106,7 +115,7 @@ class OwnerController extends Controller
 
     /**
      * create処理
-     * オーナー用飲食店追加処理
+     * 飲食店追加処理
      * @param object $request
      * @return redirect
      */
@@ -118,23 +127,60 @@ class OwnerController extends Controller
         // create処理
         Shop::create($form);
 
-        return redirect('/owner/shop/create')->with('success', '飲食店情報を追加しました');
+        return redirect('/owner/shop/create')->with('success', "飲食店「{$form['name']}」を追加しました");
     }
 
     /**
      * view表示
-     * オーナー用飲食店修正ページ
+     * 飲食店修正ページ
      * @param void
      * @return view
      */
-    public function OwnerIndexEditShop()
+    public function OwnerIndexEditShop($id)
     {
-        return view('owner.edit_shop');
+        // 該当飲食店を取得
+        $shop = Shop::find($id);
+
+        return view('owner.edit_shop', compact('shop'));
+    }
+
+    /**
+     * update処理
+     * 飲食店更新処理
+     * @param int $id
+     * @param object $request
+     * @return redirect
+     */
+    public function OwnerUpdateShop($id, ShopRequest $request) {
+        // フォーム情報の取得
+        $form = $request->only(['name', 'region', 'gerre', 'photo', 'description']);
+        
+        // update処理
+        Shop::where('id', $id)->update($form);
+
+        return redirect("/owner/shop/edit/{$id}")->with('success', "飲食店「{$form['name']}」の情報を更新しました");
+    }
+
+    /**
+     * delete処理
+     * 飲食店削除処理
+     * @param int $id
+     * @return redirect
+     */
+    public function OwnerDeleteShop($id)
+    {
+        // 削除対象の飲食店名を取得
+        $name = Shop::find($id)->name;
+
+        // delete処理
+        Shop::find($id)->delete();
+
+        return redirect('/owner')->with('success', "飲食店「{$name}」を削除しました"); 
     }
 
     /**
      * view表示
-     * オーナー用メール送信ページ
+     * メール送信ページ
      * @param void
      * @param view
      */
@@ -144,8 +190,31 @@ class OwnerController extends Controller
     }
 
     /**
+     * メール送信処理
+     * @param object $request
+     * @return redirect
+     */
+    public function OwnerSendMail(MessageRequest $request)
+    {
+        // フォーム情報の取得
+        $form = $request->only('title', 'content');
+
+        // ユーザー全員分のメールアドレスを取得
+        $users = User::all();
+
+        // メール送信
+        foreach ($users as $user) {
+            Mail::send(new OwnerMail($form['title'], $form['content'], $user['name'], $user['email']));
+    
+            // メールの二重送信防止処理
+            $request->session()->regenerateToken();            
+        }
+        return redirect('/owner/mail')->with('success', 'メールを送信しました');
+    }
+
+    /**
      * view表示
-     * オーナー用管理者設定ページ
+     * 管理者設定ページ
      * @param void
      * @return view
      */
