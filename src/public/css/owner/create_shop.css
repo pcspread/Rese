@@ -34,6 +34,8 @@
 
 .shop-error {
     min-height: 15px;
+    color: #FF0000;
+    font-weight: bold;
 }
 
 .shop-button {
@@ -58,11 +60,6 @@
     border: none;
     background-color: #888;
     color: #FFF;
-}
-
-.shop-error {
-    color: #FF0000;
-    font-weight: bold;
 }
 
 /* ===========================================================================

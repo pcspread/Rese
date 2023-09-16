@@ -14,9 +14,15 @@
         <form class="list-form">
             <div class="list-item__top">
                 <div class="list-title one">
-                    <div class="list-title__child">飲食店名</div>
-                    <div class="list-title__child">エリア</div>
-                    <div class="list-title__child">ジャンル</div>
+                    <div class="list-title__child">
+                        <p class="list-title__child-text">飲食店名</p>
+                    </div>
+                    <div class="list-title__child">
+                        <p class="list-title__child-text">エリア</p>
+                    </div>
+                    <div class="list-title__child">
+                        <p class="list-title__child-text">ジャンル</p>
+                    </div>
                 </div>
                 <div class="list-title two">
                     <p class="list-title__text">説明</p>
@@ -27,16 +33,34 @@
             @foreach ($shops as $shop)
             <div class="list-item__bottom">
                 <div class="list-content one">
-                    <div class="list-content__child">{{ $shop['name'] }}</div>
-                    <div class="list-content__child">{{ $shop['region'] }}</div>
-                    <div class="list-content__child">{{ $shop['genre'] }}</div>
+                    <div class="list-content__child">
+                        <p class="list-content__child-text">
+                            {{ $shop['name'] }}
+                        </p>
+                    </div>
+                    <div class="list-content__child">
+                        <p class="list-content__child-text">
+                            {{ $shop['region'] }}
+                        </p>
+                    </div>
+                    <div class="list-content__child">
+                        <p class="list-content__child-text">
+                            {{ $shop['genre'] }}
+                        </p>
+                    </div>
                 </div>
                 <div class="list-content two">
-                    <p class="list-content__text">{{ $shop['description'] }}</p>
+                    <p class="list-content__text">
+                        {{ $shop['description'] }}
+                    </p>
                 </div>
                 <div class="list-content three">
-                    <a class="list-button edit" href="/owner/shop/edit">修正</a>
-                    <button class="list-button delete" type="button">削除</button>
+                    <a class="list-button edit" href="/owner/shop/edit/{{ $shop['id'] }}">修正</a>
+                    <form class="list-content__delete-form" action="/owner/shop/delete/{{ $shop['id'] }}" method="POST">
+                    @method('DELETE')
+                    @csrf
+                        <button class="list-button delete" type="button" onclick="return confirmDel()">削除</button>
+                    </form>
                 </div>
             </div>
             @endforeach

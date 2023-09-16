@@ -46,9 +46,5 @@
             </div>
         </div>
     </main>
-
-    <aside class="aside">
-        <div class="upper"><</div>
-    </aside>
 </body>
 </html>

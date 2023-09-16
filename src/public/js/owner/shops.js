@@ -103,3 +103,14 @@ function clearSearch() {
     });
 }
 clearSearch();
+
+/**
+ * 「削除」を押した場合の処理
+ */
+function confirmDel() {
+    if (window.confirm('削除してもよろしいですか？')) {
+        return true;
+    } else {
+        return false;
+    }
+}

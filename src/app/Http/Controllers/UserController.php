@@ -200,8 +200,7 @@ class UserController extends Controller
         
         //メール二重送信防止
         $request->session()->regenerateToken();
-
-        // return redirect('/thanks');
+        
         return redirect('/email/verify')->with([
             'name' => $user['name'], 
             'email' => $user['email'], 
