@@ -29,7 +29,7 @@
                 <div class="header-data logout">
                     <form class="header-data__form" action="/logout" method="POST">
                     @csrf
-                        <button class="header-data__buton">ログアウト</button>
+                        <button class="header-data__button">ログアウト</button>
                     </form>
                 </div>
             </div>
