@@ -22,18 +22,40 @@
 
         <div class="header-nav">
             <div class="header-item">
-                <div class="header-data search">飲食店抽出</div>
-                <div class="header-data shop">飲食店追加</div>
-                <div class="header-data mail">メール送信</div>
-                <div class="header-data setting">管理者設定</div>
+                <div class="header-data home">
+                    <p class="header-data__text">ホーム</p>
+                </div>
+                <div class="header-data search">
+                    <p class="header-data__text">飲食店抽出</p>
+                </div>
+                <div class="header-data shop">
+                    <p class="header-data__text">飲食店追加</p>
+                </div>
+                <div class="header-data reserve">
+                    <p class="header-data__text">予約一覧</p>
+                </div>
+                <div class="header-data mail">
+                    <p class="header-data__text">メール送信</p>
+                </div>
+                <div class="header-data hp">
+                    <p class="header-data__text">サイト</p>
+                </div>
                 <div class="header-data logout">
                     <form class="header-data__form" action="/logout" method="POST">
                     @csrf
-                        <button class="header-data__button">ログアウト</button>
+                        <button class="header-data__buton">
+                            <p class="header-data__text">ログアウト</p>
+                        </button>
                     </form>
                 </div>
             </div>
         </div>
+        
+        @if (Auth::user()->email === config('owner.owner_mail'))
+        <div class="header-nav__add">
+            <p class="header-time__add-setting">管理者設定</p>
+        </div>
+        @endif
 
         <div class="header-search">
             <div class="search-group">

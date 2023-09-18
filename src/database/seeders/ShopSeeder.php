@@ -224,7 +224,7 @@ class ShopSeeder extends Seeder
             'updated_at' => Carbon::now()
         ];
         DB::table('shops')->insert($param);
-        
+
         $param = [
             'name' => '木船',
             'region' => '大阪府',

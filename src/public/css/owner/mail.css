@@ -51,10 +51,6 @@
     color: #FFF;
 }
 
-.email-button.home {
-    background-color: #FF5555;
-}
-
 .email-button:hover {
     cursor: pointer;
     border: none;

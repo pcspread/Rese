@@ -30,6 +30,18 @@ class UserSeeder extends Seeder
             ];
             DB::table('users')->insert($param);
         }
+        
+        // 店舗代表者作成
+        $owner = [
+            'name' => 'topp1111',
+            'email' => "topp1111@top.com",
+            'email_verified_at' => Carbon::now(),
+            'password' => bcrypt('topp2222'),
+            'remember_token' => bcrypt(bin2hex(random_bytes(32))),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ];
+        DB::table('users')->insert($owner);
 
         // オーナーデータ作成
         $owner = [

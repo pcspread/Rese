@@ -1,0 +1,87 @@
+@charset "UTF-8";
+
+/* ======================================================================
+header
+====================================================================== */
+.header {
+    height: 12vh;
+}
+
+.header-wrapper {
+    height: 100%;
+    background-color: #287ADC;
+}
+
+.header-title {
+    height: 100%;
+    line-height: 12vh;
+    padding-left: 15px;
+    font-size: 32px;
+    color: #FFF;
+}
+
+
+/* ======================================================================
+main
+====================================================================== */
+.email-section {
+    padding: 32px 15px;
+}
+
+.email-wrapper {
+    margin: 0 auto;
+    padding: 32px 15px;
+    border: none;
+    box-shadow: 0 0 2px 2px #AAA;
+    border-radius: 5px;
+    background-color: #FFF;
+}
+
+.email-content {}
+
+.email-content__title {
+    padding-bottom: 24px;
+    text-align: center;
+    font-size: 21px;
+}
+
+.email-content__main {
+    padding: 15px 0 24px;
+    font-size: 18px;
+}
+
+.email-content__thanks {}
+
+.email-content__sub {
+    padding: 15px 24px;
+    font-size: 18px;
+    border-radius: 5px;
+    background-color: #EEE;
+}
+
+.email-content__description {
+    padding: 15px 0;
+    word-wrap: break-word;
+}
+
+.email-button {
+    padding: 15px;
+}
+
+.email-button__thanks {
+    display: block;
+    max-width: 175px;
+    margin: 32px auto 0;
+    padding: 11px 24px;
+    border: none;
+    border-radius: 5px;
+    background-color: #287ADC;
+    text-align: center;
+    color: #FFF;
+    text-decoration: none;
+}
+
+.email-button__thanks:hover {
+    cursor: pointer;
+    background-color: #0000FF;
+}

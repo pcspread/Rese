@@ -15,6 +15,17 @@
     color: #555;
 }
 
+.shop-image {
+    margin-bottom: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #60CCAA;
+}
+
+.sho-image__instance {
+    width: 100%;
+}
+
 .shop-input {
     padding: 15px;
     border-radius: 5px;
@@ -49,10 +60,6 @@
     padding: 5px;
     background-color: #60CCAA;
     color: #FFF;
-}
-
-.shop-button.home {
-    background-color: #FF5555;
 }
 
 .shop-button:hover {

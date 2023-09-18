@@ -34,7 +34,6 @@
             </div>
             
             <div class="email-item">
-                <button class="email-button home" type="button">飲食店一覧</button>
                 <button class="email-button send">送信</button>
             </div>
         </form>

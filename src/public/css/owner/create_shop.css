@@ -51,10 +51,6 @@
     color: #FFF;
 }
 
-.shop-button.home {
-    background-color: #FF5555;
-}
-
 .shop-button:hover {
     cursor: pointer;
     border: none;

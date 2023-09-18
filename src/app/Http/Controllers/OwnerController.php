@@ -6,9 +6,12 @@ use Illuminate\Http\Request;
 // Model読込
 use App\Models\Shop;
 use App\Models\User;
+use App\Models\Reserve;
+use App\Models\Manager;
 // Request読込
 use App\Http\Requests\ShopRequest;
 use App\Http\Requests\MessageRequest;
+use App\Http\Requests\ManagerRequest;
 // Mail読込
 use Illuminate\Support\Facades\Mail;
 use App\Mail\OwnerMail;
@@ -180,6 +183,20 @@ class OwnerController extends Controller
 
     /**
      * view表示
+     * 予約一覧
+     * @param void
+     * @return view
+     */
+    public function OwnerIndexReserve()
+    {
+        // 予約情報を全件取得
+        $reserves = Reserve::orderBy('date', 'asc')->get();
+
+        return view('owner.reserve', compact('reserves'));
+    }
+
+    /**
+     * view表示
      * メール送信ページ
      * @param void
      * @param view
@@ -220,6 +237,26 @@ class OwnerController extends Controller
      */
     public function OwnerIndexSetting()
     {
-        return view('owner.setting');
+        // 代表者名を格納
+        $name = Manager::find(1)->name;
+
+        return view('owner.setting', compact('name'));
+    }
+
+    /**
+     * update処理
+     * 管理者情報の更新
+     * @param object $request
+     * @return redirect
+     */
+    public function OwnerUpdateSetting(ManagerRequest $request)
+    {
+        // フォーム情報の取得
+        $name = $request->only('name');
+        
+        // update処理
+        Manager::find(1)->update($name);
+
+        return redirect('/owner/setting')->with('success', "店舗代表者を「{$name['name']}」に変更しました");
     }
 }

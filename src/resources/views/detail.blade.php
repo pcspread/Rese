@@ -200,6 +200,7 @@
                 @foreach ($rates as $rate)
                 <div class="rate-comment__content-item">
                     <h4 class="rate-comment__content-title">{{ $rate['name'] }}</h4>
+                    <p class="rate-comment__content-time">{{ $rate['created_at'] }}</p>
                     <p class="rate-comment__content-rates">{{ $rate['number'] }}</p>
                     <p class="rate-comment__display-content">{{ $rate['comment'] }}</p>
                 </div>

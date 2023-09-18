@@ -1,0 +1,109 @@
+@charset "UTF-8";
+
+
+.reserve-section {
+    width: 95%;
+    margin: 11vh auto;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #CCC;
+}
+
+.reserve-section__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #AAA;
+    text-align: center;
+    font-size: 18px;
+}
+
+.reserve-section__title-text {}
+
+.reserve-search {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.reserve-search__icon-instance {
+    display: block;
+    padding: 5px;
+    font-size: 28px;
+    fill: #555;
+}
+
+.reserve-search__input {
+    border-radius: 5px;
+    padding: 3px;
+}
+
+.reserve-search__clear {
+    margin: 0 5px;
+    padding: 0 5px;
+    border-radius: 45px;
+    border: 2px solid #555;
+    color: #555;
+    font-weight: bold;
+}
+
+.reserve-search__clear:hover {
+    cursor: pointer;
+    transform: scaleX(1.1);
+}
+
+
+.reserve-content {
+    margin-top: 15px;
+    table-layout: fixed;
+    word-break: break-all;
+    text-align: center;
+}
+
+.reserve-content__title {
+    width: 100%;
+    background-color: #60CCAA;
+}
+
+.reserve-content__title-record {
+    width: 400px;
+    padding: 10px;
+    border: 2px solid #888;
+    color: #FFF;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.reserve-content__instance {
+    width: 100%;
+}
+
+.reserve-content__instance-record {
+    width: 20%;
+    padding: 10px;
+    border: 2px solid #888;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: #FFF;
+}
+
+.reserve-empty {
+    padding: 15px;
+    font-size: 15px;
+}
+
+/* ==========================================================================================
+メディアクエリ
+========================================================================================== */
+@media screen and (max-width: 300px) {
+    .reserve-content__title-record {
+        padding: 5px;
+    }
+
+    .reserve-content__instance-record {
+        padding: 5px;
+    }
+}

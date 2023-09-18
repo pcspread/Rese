@@ -66,7 +66,6 @@
             </div>
 
             <div class="shop-item">
-                <button class="shop-button home" type="button">飲食店一覧</button>
                 <button class="shop-button store">追加</button>
             </div>
         </form>
