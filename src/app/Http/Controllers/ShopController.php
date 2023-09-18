@@ -200,7 +200,7 @@ class ShopController extends Controller
         $shop = Shop::find($id);
 
         // コメント情報の取得
-        $rates = Rate::where('shop_id', $id)->get();
+        $rates = Rate::where('shop_id', $id)->orderBy('id', 'desc')->get();
 
         // 決済後の店舗情報(deleted_at)の取得
         $delete = Reserve::onlyTrashed()->where([

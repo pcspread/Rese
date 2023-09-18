@@ -42,85 +42,121 @@
 
 .header-item {
     display: grid;
-    grid-template-rows: 8vh;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 9vh;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     background-color: #EEE;
     z-index: 10;
 }
 
-.header-data.search {
-    grid-column: 1/2;
-    grid-row: 1/1;
+.header-data {
+    padding: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-right: 1px solid #888;
+    text-align: center;
     font-weight: bold;
+    border-bottom: 1px solid #888;
+}
+
+.header-data:last-child {
+    padding: 0;
+}
+
+.header-data.home {
+    grid-column: 1/2;
+    grid-row: 1/1;
+    border-right: 1px solid #888;
+}
+
+.header-data.search {
+    grid-column: 2/3;
+    grid-row: 1/1;
 }
 
 .header-data.shop {
-    grid-column: 2/3;
+    grid-column: 3/4;
     grid-row: 1/1;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
+    border-left: 1px solid #888;
     border-right: 1px solid #888;
-    font-weight: bold;
+}
+
+.header-data.reserve {
+    grid-column: 4/5;
+    grid-row: 1/1;
+    border-right: 1px solid #888;
 }
 
 .header-data.mail {
-    grid-column: 3/4;
+    grid-column: 5/6;
     grid-row: 1/1;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
     border-right: 1px solid #888;
-    font-weight: bold;
 }
 
-.header-data.setting {
-    grid-column: 4/5;
+.header-data.hp {
+    grid-column: 6/7;
     grid-row: 1/1;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
     border-right: 1px solid #888;
-    font-weight: bold;
 }
 
 .header-data.logout {
-    grid-column: 5/6;
+    grid-column: 7/8;
     grid-row: 1/1;
     border-bottom: 1px solid #888;
 }
 
 .header-data:hover {
-    color: #FFF;
     cursor: pointer;
-    background-color: #888;
+    background-color: #BBB;
 }
 
 .header-data__form {
     width: 100%;
+    height: 100%;
 }
 
-.header-data__button {
+.header-data__buton {
     box-sizing: border-box;
     width: 100%;
-    height: 8vh;
+    height: 9vh;
     border: none;
+    border-bottom: 1px solid #888;
     font-size: 16px;
     font-weight: bold;
 }
 
-.header-data__button:hover {
+.header-data__buton:hover {
     cursor: pointer;
     border: none;
-    background-color: #888;
-    color: #FFF;
+    background-color: #BBB;
+    /* ホバー時にボーダーを消さない為 */
+    border-bottom: 1px solid #888;
+}
+
+/* ========================= nav-add ========================= */
+.header-time__add {}
+
+.header-time__add-setting {
+    position: fixed;
+    top: 9vh;
+    left: 0;
+    width: 100px;
+    height: 9vh;
+    line-height: 8vh;
+    border-radius: 0 0 15px 0;
+    border-right: 1px solid #888;
+    border-bottom: 1px solid #888;
+    background-color: #EEE;
+    text-align: center;
+    z-index: 15;
+    font-weight: bold;
+    transform: translateY(-500%);
+    transition: .1s all ease-in-out;
+}
+
+.header-time__add-setting:hover {
+    cursor: pointer;
+    border: none;
+    background-color: #BBB;
 }
 
 /* ======================================================================
@@ -353,6 +389,20 @@ main
     }
 }
 
+@media screen and (max-width:480px) {
+    .header-item {
+        grid-template-rows: 24vh;
+    }
+
+    .header-data__buton {
+        height: 24vh;
+    }
+
+    .header-time__add-setting {
+        top: 24vh;
+    }
+}
+
 @media screen and (max-width: 280px) {
     .header {
         height: 15vh;
@@ -362,17 +412,11 @@ main
         height: 100%;
     }
 
-
-    .header-title__text {
-        height: 100%;
-        line-height: 15vh;
+    .header-data__text {
+        font-size: 12px;
     }
 
-    .header-item {
-        grid-template-rows: 15vh;
-    }
-
-    .header-data__buton {
-        height: 15vh;
+    .header-time__add-setting {
+        font-size: 12px;
     }
 }

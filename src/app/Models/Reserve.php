@@ -17,12 +17,20 @@ class Reserve extends Model
     ];
 
     /**
-     * user_idとshop_idから店舗情報を取得する
-     * @param int $user_id
-     * @param int $shop_id
+     * リレーション設定(Shop)
+     * @param void
      * @return object
      */
     public function shop() {
         return $this->belongsTo(Shop::class);
+    }
+
+    /**
+     * リレーション設定(User)
+     * @param void
+     * @return object
+     */
+    public function user() {
+        return $this->belongsTo(User::class);
     }
 }

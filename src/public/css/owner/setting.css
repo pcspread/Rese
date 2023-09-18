@@ -34,6 +34,8 @@
 
 .setting-error {
     min-height: 15px;
+    color: #FF0000;
+    font-weight: bold;
 }
 
 .setting-button {
@@ -47,10 +49,6 @@
     padding: 5px;
     background-color: #60CCAA;
     color: #FFF;
-}
-
-.setting-button.home {
-    background-color: #FF5555;
 }
 
 .setting-button:hover {

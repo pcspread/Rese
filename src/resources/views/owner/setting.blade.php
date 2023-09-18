@@ -11,28 +11,22 @@
 <div class="setting-section">
     <h2 class="setting-title">管理者設定</h2>
     <div class="setting-input">
-        <div class="setting-item">
-            <label class="search-title" for="title">ユーザー名</label>
-            <input class="search-content" id="title" type="text" name="title" value="{{ old('title') }}" placeholder="入力欄" autofocus>
-        </div>
-        <div class="setting-error"></div>
+        <form class="setting-input__form" action="/owner/setting" method="POST">
+        @csrf
+            <div class="setting-item">
+                <label class="search-title" for="name">店舗代表者</label>
+                <input class="search-content" id="name" type="text" name="name" value="{{ $name }}" placeholder="入力欄">
+            </div>
+            <div class="setting-error">
+                @error('name')
+                    ※{{ $errors->first('name') }}
+                @enderror
+            </div>
 
-        <div class="setting-item">
-            <label class="search-title" for="photo">パスワード</label>
-            <input class="search-content" id="photo" type="text" name="photo">
-        </div>
-        <div class="setting-error"></div>
-
-        <div class="setting-item">
-            <label class="search-title" for="photo">店舗代表者</label>
-            <input class="search-content" id="photo" type="text" name="photo">
-        </div>
-        <div class="setting-error"></div>
-
-        <div class="setting-item">
-            <button class="setting-button home" type="button">飲食店一覧</button>
-            <button class="setting-button update">更新</button>
-        </div>
+            <div class="setting-item">
+                <button class="setting-button update">更新</button>
+            </div>
+        </form>
     </div>
 </div>
 @endsection

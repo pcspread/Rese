@@ -10,6 +10,9 @@
 @section('content')
 <div class="shop-section">
     <h2 class="shop-title">飲食店修正</h2>
+    <div class="shop-image">
+        <img class="sho-image__instance" src="{{ $shop['photo'] }}" alt="shop-image">
+    </div>
     <div class="shop-input">
     <form class="shop-input__form" action="/owner/shop/edit/{{ $shop['id'] }}" method="POST">
     @method('PATCH')
@@ -65,7 +68,6 @@
         </div>
 
         <div class="shop-item">
-            <button class="shop-button home" type="button">飲食店一覧</button>
             <button class="shop-button update">更新</button>
         </div>
     </form>

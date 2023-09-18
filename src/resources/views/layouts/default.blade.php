@@ -49,7 +49,12 @@
                     <li class="nav-list__item">
                         <a href="/mypage" class="nav-list__link">Mypage</a>
                     </li>
-                    @endif
+                        @if (Auth::user()->email === config('owner.top_mail') || Auth::user()->email === config('owner.owner_mail'))
+                        <li class="nav-list__item">
+                            <a href="/owner" class="nav-list__link">ReseA</a>
+                        </li>
+                        @endif
+                    @endif  
                 </ul>
             </nav>
         </div>

@@ -30,6 +30,7 @@
                 <div class="list-title three"></div>
             </div>
 
+            @if (count($shops) !== 0)
             @foreach ($shops as $shop)
             <div class="list-item__bottom">
                 <div class="list-content one">
@@ -64,6 +65,11 @@
                 </div>
             </div>
             @endforeach
+            @else
+            <div class="list-item__empty">
+                ※飲食店情報がありません
+            </div>
+            @endif
         </form>
     </div>
 </div>
