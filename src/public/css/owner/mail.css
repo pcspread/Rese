@@ -62,13 +62,13 @@
 メディアクエリ
 =========================================================================== */
 @media screen and (max-width: 360px) {
-    .email -section {
+    .email-section {
         width: 85%;
     }
 }
 
 @media screen and (max-width: 280px) {
-    .email -section {
+    .email-section {
         margin-top: 17vh;
     }
 }

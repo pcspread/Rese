@@ -91,21 +91,15 @@ search
     padding: 5px;
 }
 
-.search-icon__content {}
-
 .search-icon__content-instance {
     fill: #CCC;
 }
-
-.search-input {}
 
 .search-input__box {
     border: none;
     color: #777;
     font-weight: bold;
 }
-
-.search-not {}
 
 .search-not__button {
     display: block;
@@ -173,10 +167,6 @@ shops
     font-size: 18px;
 }
 
-.shop-card__tags {}
-
-.shop-card__tag {}
-
 /* ========================= clicks ========================= */
 .shop-card__clicks {
     display: flex;
@@ -197,8 +187,6 @@ shops
     opacity: .5;
 }
 
-.shop-card__form {}
-
 .shop-card__interest-click {
     border: none;
     background-color: #FFF;
@@ -213,6 +201,14 @@ shops
 .shop-card__interest-click:hover {
     cursor: pointer;
     color: #FF0000;
+}
+
+/* ======================================================================
+
+====================================================================== */
+.shop-card__empty-text {
+    padding-top: 32px;
+    font-size: 18px;
 }
 
 /* ======================================================================

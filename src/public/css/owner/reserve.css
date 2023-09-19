@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-
 .reserve-section {
     width: 95%;
     margin: 11vh auto;
@@ -21,8 +20,6 @@
     font-size: 18px;
 }
 
-.reserve-section__title-text {}
-
 .reserve-search {
     display: flex;
     justify-content: space-between;
@@ -37,6 +34,7 @@
 }
 
 .reserve-search__input {
+    width: 100%;
     border-radius: 5px;
     padding: 3px;
 }
@@ -105,5 +103,11 @@
 
     .reserve-content__instance-record {
         padding: 5px;
+    }
+}
+
+@media screen and (max-width: 280px) {
+    .reserve-section {
+        margin: 16vh auto;
     }
 }

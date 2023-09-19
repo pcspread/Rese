@@ -3,8 +3,6 @@
 /* ======================================================================
 all
 ====================================================================== */
-
-
 .header {
     border-radius: 5px;
     background-color: #EEE;
@@ -56,21 +54,15 @@ shops
     font-size: 24px;
 }
 
-.shops-cards {}
-
 .shop-card {
     width: 100%;
     margin: 10px 0 32px;
 }
 
 /* ========================= image ========================= */
-.shop-card__firstView {}
-
 .shop-card__image {
     width: 100%;
 }
-
-.shop-card__content {}
 
 /* ========================= top-group ========================= */
 .shop-card__top-group {
@@ -79,18 +71,12 @@ shops
     align-items: center;
 }
 
-.shop-card__tags {}
-
-.shop-card__tag {}
-
 .shop-card__clicks {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-left: 15px;
 }
-
-.shop-card__form {}
 
 .shop-card__interest-click {
     border: none;
@@ -107,11 +93,6 @@ shops
     cursor: pointer;
     color: #FF0000;
 }
-
-/* ========================= description ========================= */
-.shop-card__description {}
-
-.shop-card__description-content {}
 
 /* ======================================================================
 reserve
@@ -134,10 +115,6 @@ reserve
     font-size: 24px;
     color: #FFF;
 }
-
-.reserve-card {}
-
-.reserve-form {}
 
 .reserve-card__input-group {
     padding: 0 15px;
@@ -164,8 +141,6 @@ reserve
     width: 100%;
     margin-bottom: 15px;
 }
-
-.reserve-card__select-item {}
 
 .reserve-card__input-error {
     color: #FF8888;
@@ -262,22 +237,12 @@ rate
     color: #FFF;
 }
 
-.rate-comment {}
-
-.rate-comment__top-group {}
-
 .rate-comment__top-title {
     padding: 10px 0;
     text-decoration: underline;
     text-decoration-thickness: 2px;
     text-underline-offset: 3px;
 }
-
-.rate-comment__top-title__text {}
-
-.rate-comment__input-group {}
-
-.rate-comment__input-form {}
 
 .rate-comment__input-item {
     padding-bottom: 15px;
@@ -295,10 +260,6 @@ rate
     border-radius: 5px;
     box-shadow: 0 0 1px 1px #888;
 }
-
-.rate-comment__input-item {}
-
-.rate-comment__input-title {}
 
 .rate-comment__input-text {
     width: 80%;
@@ -340,8 +301,6 @@ rate
     padding: 5px 0;
 }
 
-.rate-comment__content-title__text {}
-
 .rate-comment__content-item {
     padding: 15px;
     border-top: 2px dotted #333;
@@ -350,10 +309,6 @@ rate
 .rate-comment__content-item:last-of-type {
     border-bottom: 2px dotted #333;
 }
-
-.rate-comment__content-title {}
-
-.rate-comment__content-rates {}
 
 .rate-comment__content-rate {
     text-decoration: none;

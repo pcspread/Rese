@@ -8,10 +8,6 @@ list-item__top
     padding-bottom: 32px;
 }
 
-.list-wrapper {}
-
-.list-form {}
-
 .list-item__top {
     height: 12vh;
     display: flex;
@@ -24,14 +20,10 @@ list-item__top
 .list-title.one {
     width: 20%;
     font-weight: bold;
-    /* box-sizing: content-box; */
-    /* border-top: 2px solid #888; */
-    /* border-bottom: 2px solid #888; */
 }
 
 .list-title__child {
     height: 4vh;
-    /* box-sizing: border-box; */
     border-right: 2px solid #888;
     border-bottom: 2px solid #888;
 }
@@ -46,20 +38,15 @@ list-item__top
     display: flex;
     justify-content: center;
     align-items: center;
-    /* border-top: 2px solid #888; */
     border-right: 2px solid #888;
     border-bottom: 2px solid #888;
     font-weight: bold;
-    /* box-sizing: content-box; */
 }
 
 .list-title.three {
     width: 25%;
     height: 100%;
-    /* border-top: 2px solid #888; */
-    /* border-left: 2px solid #888; */
     border-bottom: 2px solid #888;
-    /* box-sizing: content-box; */
 }
 
 /* ==========================================================================================
@@ -72,7 +59,6 @@ list-item__bottom
     justify-content: center;
     text-align: center;
     align-items: center;
-    /* margin: 8px 0; */
 }
 
 .list-content.one {
@@ -108,11 +94,9 @@ list-item__bottom
     height: 18vh;
     padding: 0 5px;
     line-height: 18vh;
-    /* border-top: 2px solid #888; */
     border-right: 1px solid #888;
     border-bottom: 2px solid #888;
     text-align: left;
-    /* box-sizing: content-box; */
 }
 
 .list-content.three {
@@ -121,9 +105,7 @@ list-item__bottom
     display: flex;
     justify-content: center;
     align-items: center;
-    /* border-top: 2px solid #888; */
     border-bottom: 2px solid #888;
-    /* box-sizing: content-box; */
 }
 
 .list-button.edit {
@@ -165,7 +147,7 @@ list-item__bottom
 /* ==========================================================================================
 list-item__empty
 ========================================================================================== */
-.list-item__empty {
+.list-item__empty-text {
     padding: 15px;
     font-weight: 15px;
 }
@@ -287,10 +269,6 @@ list-item__empty
     }
 
     /* ============================== list-item__bottom ==============================*/
-    .list-item__bottom {
-        /* display: inline-block; */
-    }
-
     .list-content__child {
         height: 15vh;
         line-height: 15vh;

@@ -16,7 +16,7 @@ class ManagerSeeder extends Seeder
     public function run()
     {
         $manager = [
-            'name' => config('owner.top_user'),
+            'name' => 'topp1111',
         ];
         DB::table('managers')->insert($manager);
     }

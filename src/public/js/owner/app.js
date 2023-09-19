@@ -57,7 +57,6 @@ function buttonClicks() {
     const mail = document.querySelector('.header-data.mail');
     const hp = document.querySelector('.header-data.hp');
     const logout = document.querySelector('.header-data.logout');
-    const setting = document.querySelector('.header-time__add-setting');
 
     const nav = document.querySelector('.header-nav');
     const list = document.querySelector('.list-item__top');
@@ -71,7 +70,6 @@ function buttonClicks() {
     search.addEventListener('click', function () {
         nav.style.display = 'none';
         list.style.display = 'none';
-        setting.style.display = 'none';
         headerSearch.style.display = 'block';
     });
     // 飲食店追加ボタンをクリックした時
@@ -93,11 +91,6 @@ function buttonClicks() {
     // ログアウトボタンをクリックした時
     logout.addEventListener('click', function () {
         location.href = '/logout';
-    });
-
-    // 管理者設定ボタンをクリックした時
-    setting.addEventListener('click', function () {
-        location.href = '/owner/setting';
     });
 }
 buttonClicks();
@@ -232,3 +225,22 @@ function displayNone() {
     }, 3500);
 }
 displayNone();
+
+/**
+ * 管理者設定に関する制御
+ * 「ナビメニューのボタンをクリックした時の処理」と分離
+ */
+function settingBtn() {
+    const setting = document.querySelector('.header-time__add-setting');
+    const search = document.querySelector('.header-data.search');
+
+    // 飲食店抽出をクリックした時
+    search.addEventListener('click', function () {
+        setting.style.display = 'none';
+    });
+    // 管理者設定ボタンをクリックした時
+    setting.addEventListener('click', function () {
+        location.href = '/owner/setting';
+    });
+}
+settingBtn();

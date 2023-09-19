@@ -67,7 +67,7 @@
             @endforeach
             @else
             <div class="list-item__empty">
-                ※飲食店情報がありません
+                <p class="list-item__empty-text">※飲食店情報がありません</p>
             </div>
             @endif
         </form>

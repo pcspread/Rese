@@ -3,6 +3,7 @@
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/owner/setting.css') }}">
 @endsection
+
 @section('js')
     <script src="{{ asset('js/owner/setting.js') }}" defer></script>
 @endsection

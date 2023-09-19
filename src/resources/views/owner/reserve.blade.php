@@ -42,9 +42,9 @@
         @endforeach
     </table>
     @else
-        <p class="reserve-empty">
-            ※予約情報がありません
-        </p>
+    <p class="reserve-empty">
+        ※予約情報がありません
+    </p>
     @endif
 </div>
 @endsection

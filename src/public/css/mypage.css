@@ -3,8 +3,6 @@
 /* ======================================================================
 all
 ====================================================================== */
-
-
 .header {
     border-radius: 5px;
     background-color: #EEE;
@@ -14,8 +12,6 @@ all
     padding: 100px 75px;
     background-color: #EEE;
 }
-
-.mypage-header {}
 
 .mypage-header__name {
     padding: 15px;
@@ -35,8 +31,6 @@ reserve
     width: 40%;
     padding-left: 50px;
 }
-
-.reserve-title {}
 
 .reserve-title__text {
     padding: 10px 10px 20px;
@@ -58,8 +52,6 @@ reserve
     box-shadow: 2px 2px 3px #888;
     background-color: #287ADC;
 }
-
-.reserve-form {}
 
 .reserve-card__title {
     display: flex;
@@ -170,6 +162,11 @@ reserve
     color: #FFF;
 }
 
+.reserve-card__item-content__option {
+    background-color: #FFF;
+    color: #287ADC;
+}
+
 .reserve-card__input-error {
     color: #FF8888;
     font-weight: bold;
@@ -186,8 +183,6 @@ shops
     width: 60%;
     padding-left: 50px;
 }
-
-.shops-title {}
 
 .shops-title__text {
     padding: 10px 25px;
@@ -231,10 +226,6 @@ shops
     font-size: 18px;
 }
 
-.shop-card__tags {}
-
-.shop-card__tag {}
-
 /* ========================= clicks ========================= */
 .shop-card__clicks {
     display: flex;
@@ -254,8 +245,6 @@ shops
 .shop-card__detail-click:hover {
     opacity: .5;
 }
-
-.shop-card__form {}
 
 .shop-card__interest-click {
     border: none;
@@ -277,7 +266,6 @@ shops
 .color {
     background-color: #FFF;
 }
-
 
 /* ======================================================================
 メディアクエリ

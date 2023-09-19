@@ -54,8 +54,6 @@ content
     margin: 0 auto;
 }
 
-.register-item {}
-
 .register-item__main {
     display: flex;
     justify-content: left;
@@ -91,8 +89,6 @@ content
 .register-error {
     color: #FF0000;
 }
-
-.register-button {}
 
 .register-button__submit {
     display: block;

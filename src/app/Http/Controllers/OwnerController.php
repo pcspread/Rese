@@ -8,6 +8,7 @@ use App\Models\Shop;
 use App\Models\User;
 use App\Models\Reserve;
 use App\Models\Manager;
+use App\Models\Message;
 // Request読込
 use App\Http\Requests\ShopRequest;
 use App\Http\Requests\MessageRequest;
@@ -215,6 +216,9 @@ class OwnerController extends Controller
     {
         // フォーム情報の取得
         $form = $request->only('title', 'content');
+
+        // create処理
+        Message::create($form);
 
         // ユーザー全員分のメールアドレスを取得
         $users = User::all();
