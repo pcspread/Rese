@@ -60,37 +60,44 @@
     </div>
 
     <div class="shops-group">
-        @foreach ($shops as $shop)
-        <div class="shop-card">
-            <div class="shop-card__firstView">
-                <img class="shop-card__image" src="{{ $shop['photo'] }}" alt="shop-photo">
-            </div>
-            <div class="shop-card__content">
-                <h1 class="shop-title">{{ $shop['name'] }}</h1>
-                <div class="shop-card__tags">
-                    <span class="shop-card__tag">#{{ $shop['region'] }}</span>
-                    <span class="shop-card__tag">#{{ $shop['genre'] }}</span>
+        @if (count($shops) !== 0)
+            @foreach ($shops as $shop)
+            <div class="shop-card">
+                <div class="shop-card__firstView">
+                    <img class="shop-card__image" src="{{ $shop['photo'] }}" alt="shop-photo">
                 </div>
-                <div class="shop-card__clicks">
-                    <a class="shop-card__detail-click" href="/detail/{{ $shop['id'] }}">詳しく見る</a>
-                    <form class="shop-card__form" action="/like/{{ $shop['id'] }}" method="POST">
-                    @csrf
-                        @if (Auth::check())
-                            @if (empty($shop->interest(Auth::id(), $shop['id'])))
-                            <input class="shop-card__interest-click" type="submit" value="♥">
-                            @else
-                                <form class="shop-card__false-form" action="/like/{{ $shop['id'] }}" method="POST">
-                                @method('PATCH')
-                                @csrf
-                                    <input class="shop-card__interest-click true" type="submit" value="♥">
-                                </form>
+                <div class="shop-card__content">
+                    <h1 class="shop-title">{{ $shop['name'] }}</h1>
+                    <div class="shop-card__tags">
+                        <span class="shop-card__tag">#{{ $shop['region'] }}</span>
+                        <span class="shop-card__tag">#{{ $shop['genre'] }}</span>
+                    </div>
+                    <div class="shop-card__clicks">
+                        <a class="shop-card__detail-click" href="/detail/{{ $shop['id'] }}">詳しく見る</a>
+                        <form class="shop-card__form" action="/like/{{ $shop['id'] }}" method="POST">
+                        @csrf
+                            @if (Auth::check())
+                                @if (empty($shop->interest(Auth::id(), $shop['id'])))
+                                <input class="shop-card__interest-click" type="submit" value="♥">
+                                @else
+                                    <form class="shop-card__false-form" action="/like/{{ $shop['id'] }}" method="POST">
+                                    @method('PATCH')
+                                    @csrf
+                                        <input class="shop-card__interest-click true" type="submit" value="♥">
+                                    </form>
+                                @endif
                             @endif
-                        @endif
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-        @endforeach
+            @endforeach
+        @else
+            <div class="shop-card__empty">
+                <p class="shop-card__empty-text">※飲食店情報がありません</p>
+            </div>
+        @endif
+
     </div>
 </div>
 @endsection

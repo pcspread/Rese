@@ -37,8 +37,6 @@ main
     background-color: #FFF;
 }
 
-.email-content {}
-
 .email-content__title {
     padding-bottom: 24px;
     text-align: center;
@@ -49,8 +47,6 @@ main
     padding: 15px 0 24px;
     font-size: 18px;
 }
-
-.email-content__thanks {}
 
 .email-content__sub {
     padding: 15px 24px;

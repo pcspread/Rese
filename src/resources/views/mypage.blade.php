@@ -48,6 +48,7 @@
                                     <p class="reserve-card__item-content">{{ $reserve->shop['name'] }}</p>
                                 </div>
                             </div>
+
                             <!-- date -->
                             <div class="reserve-card__item">
                                 <div class="reserce-card__item-group">
@@ -60,6 +61,7 @@
                                 </div>
                                 @enderror
                             </div>
+
                             <!-- time -->
                             <div class="reserve-card__item">
                                 <div class="reserce-card__item-group">
@@ -76,13 +78,14 @@
                                 </div>
                                 @enderror
                             </div>
+
                             <!-- number -->
                             <div class="reserve-card__item">
                                 <div class="reserce-card__item-group">
                                     <label class="reserve-card__item-title">Number</label>
                                     <select class="reserve-card__item-content" name="number">
                                         @for ($s = 1; $s <= 5; $s++)
-                                        <option class="reserve_card__item-content__option" value="{{ $s }}" @if ((int)$reserve['number'] === $s) selected @endif>
+                                        <option class="reserve-card__item-content__option" value="{{ $s }}" @if ((int)$reserve['number'] === $s) selected @endif>
                                             {{ $s }}
                                         </option>    
                                         @endfor
@@ -94,6 +97,15 @@
                                 </div>
                                 @enderror
                             </div>
+
+                            <!-- Price -->
+                            <div class="reserve-card__item">
+                                <div class="reserce-card__item-group">
+                                    <label class="reserve-card__item-title">Price</label>
+                                    <p class="reserve-card__item-content">{{ $reserve['number'] * 1000 }}円</p>
+                                </div>
+                            </div>
+
                             <!-- button -->
                             <div class="reserve-card__button-group">
                                 <button class="reserve-card__update-button" onclick="return confirmUpdate()">更新</button>

@@ -207,26 +207,4 @@ class UserController extends Controller
             'token' => $user['token']
         ]);
     }
-
-    // /**
-    //  * メール確認ハンドラ
-    //  * @param array $request
-    //  * @return redirect
-    //  */
-    // public function confirmEmail(EmailVerificationRequest $request) {
-    //     $request->fulfill();
-
-    //     return redirect('/');
-    // }
-
-    // /**
-    //  * メール確認の再送信
-    //  * @param array $request
-    //  * @return back
-    //  */
-    // public function resendEmail(Request $request)
-    // {
-    //     $request->user()->sendEmailVerificationNotification();
-    //     return back()->with('message', 'Verification link sent!');
-    // }
 }
