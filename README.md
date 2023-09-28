@@ -66,12 +66,12 @@
 ## テーブル設計
 
 ![Alt text](image-5.png)
+![Alt text](image-6.png)
+![Alt text](image-7.png)
 
 ## ER 図
 
 ![Alt text](image-1.png)
-![Alt text](image-6.png)
-![Alt text](image-7.png)
 
 ## 画面遷移図
 
@@ -118,18 +118,18 @@ $ composer create-project "laravel/laravel=8.*" . --prefer-dist
 $ docker-compose exec mysql bash
 ```
 
-(5)作成途中に PC 不具合が起き、作成途中の Github 情報を clone して、作成を行いました。そのため、プルリクエスト情報が一部のみになっています。
-[作成過程１]
-https://github.com/pcspread/Rese_save1
-[作成過程２]
-https://github.com/pcspread/Rese_save2
+(5)作成途中に PC 不具合が起き、作成途中の Github 情報を clone して、作成を行いました。そのため、プルリクエスト情報が一部のみになっています。<br />
+[作成過程１]<br />
+https://github.com/pcspread/Rese_save1<br />
+[作成過程２]<br />
+https://github.com/pcspread/Rese_save2<br />
 
 ## その他
 
 ■ ダミーデータ<br />
 下記の内容で、seeder ファイルを登録しています。<br />
 [内容]<br />
-・ユーザー情報　　　：一般ユーザー 3 人、店舗代表者、管理者<br />
+・ユーザー情報　　　：一般ユーザー 3 件、店舗代表者、管理者<br />
 ・代表者名　　　　　：topp1111<br />
 ・飲食店情報　　　　：20 件　　<br />
 ・飲食店評価コメント<br />
