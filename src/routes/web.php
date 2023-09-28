@@ -18,10 +18,6 @@ use App\Http\Controllers\ReserveController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Auth::route();
-
-// Route::middleware('verified')->group(function() {
-    
 // view表示：飲食店一覧ページ作成
 Route::get('/', [ShopController::class, 'indexShops'])->name('verification.notice');
 // view表示：飲食店詳細ページ
@@ -52,12 +48,6 @@ Route::prefix('email')->group(function () {
     // view表示：メール送信済ページ
     Route::post('/verify', [UserController::class, 'resendMail']);
 });
-// Route::get('/email/verify', [UserController::class, 'indexMail'])->middleware('auth')->name('verification.notice');
-// メール確認ハンドラ
-// Route::get('/email/verify/{id}/{hash}', [UserController::class, 'confirmEmail'])->middleware('signed')->name('verification.verify');
-// Route::get('/email/verify/{id}/{hash}', [UserController::class, 'confirmEmail'])->middleware(['auth', 'signed'])->name('verification.verify');
-// メールの再送信
-// Route::post('/email/verification-notification', [UserController::class, 'resendEmail'])->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 // view表示：サンクスページ
 Route::get('/thanks', [UserController::class, 'indexComplete']);
@@ -81,32 +71,32 @@ Route::middleware(['auth', 'verified'])->group(function() {
 
     // 予約追加処理
     Route::post('/detail/{shop_id}', [ShopController::class, 'addReserve']);
-    
+
     // view表示：予約完了ページ
     Route::get('/done', [ShopController::class, 'doneReserve']);
 
     // マイページ
     Route::prefix('/mypage')->group(function() {
         // view表示：マイページ
-        Route::get('/', [ShopController::class, 'personal'])->name('mypage');        
+        Route::get('/', [ShopController::class, 'personal'])->name('mypage');
 
         // お気に入り削除処理(マイページ)
         Route::patch('/like/{id}', [ShopController::class, 'cancelLikeMy']);
-        
+
         // 予約
         Route::prefix('/reserve')->group(function() {
             // 予約削除処理
             Route::delete('/{shop_id}', [ShopController::class, 'deleteReserve']);
-            
+
             // 予約更新処理
             Route::patch('/{shop_id}', [ShopController::class, 'updateReserve']);
         });
-        
+
         // stripe決済
         Route::prefix('/payment')->group(function () {
             // stripe決済後の処理
             Route::get('/close', [StripePaymentController::class, 'closeCheckout'])->name('closeCheckout');
-        
+
             // stripe決済処理
             Route::get('/{reserve_id}', [StripePaymentController::class, 'indexStripe']);
         });
@@ -151,17 +141,9 @@ Route::middleware(['auth', 'verified'])->group(function() {
         });
     });
 
-
-    // stripe決済処理
-    // Route::get('/mypage/payment/checkout', [StripePaymentController::class, 'checkout']);
-    
     // view表示：ログアウトページ
     Route::post('/logout', [UserController::class, 'logout']);
-});
-    
-// 保護下のルート
-Route::get('/profile', function() {
-})->middleware('verified');
+    });
 
-// view表示：認証メール
-// Route::get('/send/email', [UserController::class, 'sendMail']);
+    // 保護下のルート
+    // Route::get('/profile', function() {})->middleware('verified');

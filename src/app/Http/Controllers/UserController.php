@@ -17,10 +17,6 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\sendMail;
 // Carbon読込
 use Carbon\Carbon;
-// Event読込
-use Illuminate\Auth\Events\Registered;
-// EmailVerificationRequest読込
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 class UserController extends Controller
 {
@@ -113,14 +109,14 @@ class UserController extends Controller
         // メール送信
         // event(new Registered($user));
         Mail::send(new sendMail($user['name'], $user['email'], $token));
-        
+
         //メール二重送信防止
         $request->session()->regenerateToken();
 
         // return redirect('/thanks');
         return redirect('/email/verify')->with([
-            'name' => $user['name'], 
-            'email' => $user['email'], 
+            'name' => $user['name'],
+            'email' => $user['email'],
             'token' => $token
         ]);
     }
@@ -132,7 +128,7 @@ class UserController extends Controller
      * @return view
      */
     public function indexComplete(Request $request)
-    {   
+    {
         // ユーザー情報を全件取得
         $records = User::all();
 
@@ -193,17 +189,16 @@ class UserController extends Controller
         // ユーザー情報を取得
         $user = $request->only('name', 'email', 'token');
 
-        
         // メール送信
         // event(new Registered($user));
         Mail::send(new sendMail($user['name'], $user['email'], $user['token']));
-        
+
         //メール二重送信防止
         $request->session()->regenerateToken();
-        
+
         return redirect('/email/verify')->with([
-            'name' => $user['name'], 
-            'email' => $user['email'], 
+            'name' => $user['name'],
+            'email' => $user['email'],
             'token' => $user['token']
         ]);
     }

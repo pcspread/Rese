@@ -15,7 +15,7 @@
             <a class="shop-button__back" href="/back"><</a>
             <h1 class="shop-title__text">{{ $shop['name']}}</h1>
         </div>
-    
+
         <div class="shops-cards">
             <div class="shop-card">
                 <div class="shop-card__firstView">

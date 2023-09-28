@@ -43,7 +43,7 @@
                         @csrf
                             <!-- shop -->
                             <div class="reserve-card__item">
-                                <div class="reserce-card__item-group">
+                                <div class="reserve-card__item-group">
                                     <label class="reserve-card__item-title">Shop</label>
                                     <p class="reserve-card__item-content">{{ $reserve->shop['name'] }}</p>
                                 </div>
@@ -51,7 +51,7 @@
 
                             <!-- date -->
                             <div class="reserve-card__item">
-                                <div class="reserce-card__item-group">
+                                <div class="reserve-card__item-group">
                                     <label class="reserve-card__item-title">Date</label>
                                     <input class="reserve-card__item-content" type="date" name="date" value="{{ $reserve['date'] }}" placeholder="入力欄">
                                 </div>
@@ -64,7 +64,7 @@
 
                             <!-- time -->
                             <div class="reserve-card__item">
-                                <div class="reserce-card__item-group">
+                                <div class="reserve-card__item-group">
                                     <label class="reserve-card__item-title">Time</label>
                                     <select class="reserve-card__item-content" name="time">
                                         @for ($i = 17; $i <= 22; $i++)
@@ -81,13 +81,13 @@
 
                             <!-- number -->
                             <div class="reserve-card__item">
-                                <div class="reserce-card__item-group">
+                                <div class="reserve-card__item-group">
                                     <label class="reserve-card__item-title">Number</label>
                                     <select class="reserve-card__item-content" name="number">
                                         @for ($s = 1; $s <= 5; $s++)
                                         <option class="reserve-card__item-content__option" value="{{ $s }}" @if ((int)$reserve['number'] === $s) selected @endif>
                                             {{ $s }}
-                                        </option>    
+                                        </option>
                                         @endfor
                                     </select>
                                 </div>
@@ -100,7 +100,7 @@
 
                             <!-- Price -->
                             <div class="reserve-card__item">
-                                <div class="reserce-card__item-group">
+                                <div class="reserve-card__item-group">
                                     <label class="reserve-card__item-title">Price</label>
                                     <p class="reserve-card__item-content">{{ $reserve['number'] * 1000 }}円</p>
                                 </div>

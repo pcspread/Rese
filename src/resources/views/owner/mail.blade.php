@@ -22,7 +22,7 @@
                     ※{{ $errors->first('title') }}
                 @enderror
             </div>
-            
+
             <div class="email-item">
                 <label class="search-title" for="content">内容</label>
                 <textarea class="search-content" name="content" id="content" maxlength="255" placeholder="入力欄">{{ old('content') }}</textarea>
@@ -32,7 +32,7 @@
                     ※{{ $errors->first('content') }}
                 @enderror
             </div>
-            
+
             <div class="email-item">
                 <button class="email-button send">送信</button>
             </div>

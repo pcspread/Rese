@@ -17,13 +17,13 @@
                 メールに記載のリンクへアクセスいただくと、本登録が完了します。<br />
             </p>
         </div>
-        
+
         <div class="resend-email__group">
             <div class="resend_email__description">
                 メールが届かない場合は、下記「再送する」より認証メールを再送信いただけます。<br />
                 ※認証メールが届かない場合は、メールアドレスが間違っている可能性がございますので、お手数をおかけしますが、登録画面から再度ご登録をお願いします。
             </div>
-            
+
             <form class="resend-email__form" action="/email/verify" method="POST">
             @csrf
                 <input type="hidden" name="name" value="{{ session('name') }}">

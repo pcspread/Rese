@@ -40,7 +40,7 @@ class ShopController extends Controller
             if (!in_array($shop['region'], $regions)) {
                 $regions[] = $shop['region'];
             }
-            
+
             // genreカラム
             if (!in_array($shop['genre'], $genres)) {
                 $genres[] = $shop['genre'];
@@ -101,7 +101,7 @@ class ShopController extends Controller
 
         return view('shops', compact(['shops', 'regions', 'genres', 'interests']));
     }
-    
+
     /**
      * view表示
      * mypage.blade.php
@@ -172,7 +172,7 @@ class ShopController extends Controller
 
         return redirect('/');
     }
-    
+
     /**
      * お気に入り削除処理(マイページ)
      * @param int $id 店舗ID
@@ -210,7 +210,7 @@ class ShopController extends Controller
 
         return view('detail', compact(['shop', 'rates', 'delete']));
     }
-    
+
     /**
      * お気に入り追加処理(飲食店詳細ページ)
      * @param int $id 店舗ID

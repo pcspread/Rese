@@ -28,7 +28,7 @@ rateDisplay();
 /**
  * メニューの開閉時の処理
 */
-function openMenue() {
+function openMenu() {
     // DOM要素を取得
     const header = document.querySelector('.header');
     const icon = document.querySelector('.header-icon');
@@ -38,7 +38,7 @@ function openMenue() {
         header.classList.toggle('color');
     });
 }
-openMenue();
+openMenu();
 
 /**
  * ログイン中の画面レイアウトの変更
@@ -59,10 +59,10 @@ screenDesign();
 function changeBtn() {
     const input = document.querySelector('.reserve-card__input-group');
     const description = document.querySelector('.reserve-card__content-description');
-    const txts = document.querySelectorAll('.reserve-item__content');
+    const texts = document.querySelectorAll('.reserve-item__content');
     const addBtn = document.querySelector('.reserve-card__button-reserve');
 
-    if (txts[1].textContent !== '予約無') {
+    if (texts[1].textContent !== '予約無') {
         input.style.display = 'none';
         description.style.display = 'block';
         addBtn.style.display = 'none';

@@ -33,7 +33,7 @@ class OwnerController extends Controller
     {
         // 飲食店情報を全件取得
         $shops = Shop::all();
-        
+
         // 検索キーワードを取得
         $area = $request['area'];
         $genre = $request['genre'];
@@ -50,7 +50,7 @@ class OwnerController extends Controller
             if (!in_array($shop['region'], $regions)) {
                 $regions[] = $shop['region'];
             }
-            
+
             // genreカラム
             if (!in_array($shop['genre'], $genres)) {
                 $genres[] = $shop['genre'];
@@ -155,10 +155,11 @@ class OwnerController extends Controller
      * @param object $request
      * @return redirect
      */
-    public function OwnerUpdateShop($id, ShopRequest $request) {
+    public function OwnerUpdateShop($id, ShopRequest $request)
+    {
         // フォーム情報の取得
-        $form = $request->only(['name', 'region', 'gerre', 'photo', 'description']);
-        
+        $form = $request->only(['name', 'region', 'genre', 'photo', 'description']);
+
         // update処理
         Shop::where('id', $id)->update($form);
 
@@ -179,7 +180,7 @@ class OwnerController extends Controller
         // delete処理
         Shop::find($id)->delete();
 
-        return redirect('/owner')->with('success', "飲食店「{$name}」を削除しました"); 
+        return redirect('/owner')->with('success', "飲食店「{$name}」を削除しました");
     }
 
     /**
@@ -226,9 +227,9 @@ class OwnerController extends Controller
         // メール送信
         foreach ($users as $user) {
             Mail::send(new OwnerMail($form['title'], $form['content'], $user['name'], $user['email']));
-    
+
             // メールの二重送信防止処理
-            $request->session()->regenerateToken();            
+            $request->session()->regenerateToken();
         }
         return redirect('/owner/mail')->with('success', 'メールを送信しました');
     }
@@ -257,7 +258,7 @@ class OwnerController extends Controller
     {
         // フォーム情報の取得
         $name = $request->only('name');
-        
+
         // update処理
         Manager::find(1)->update($name);
 

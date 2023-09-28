@@ -1,7 +1,7 @@
 /**
  * メニューの開閉時の処理
 */
-function openMenue() {
+function openMenu() {
     // DOM要素を取得
     const header = document.querySelector('.header');
     const icon = document.querySelector('.header-icon');
@@ -11,7 +11,7 @@ function openMenue() {
         header.classList.toggle('color');
     });
 }
-openMenue();
+openMenu();
 
 /**
  * 予約削除の確認

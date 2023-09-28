@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="payment-section">
-    <p class="payment-desctiption">決済ページへ移動します</p>
+    <p class="payment-description">決済ページへ移動します</p>
 </div>
 
 <script src="https://js.stripe.com/v3/"></script>

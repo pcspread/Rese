@@ -43,14 +43,14 @@
                 <div class="header-data logout">
                     <form class="header-data__form" action="/logout" method="POST">
                     @csrf
-                        <button class="header-data__buton">
+                        <button class="header-data__button">
                             <p class="header-data__text">ログアウト</p>
                         </button>
                     </form>
                 </div>
             </div>
         </div>
-        
+
         @if (Auth::user()->email === config('owner.owner_mail'))
         <div class="header-nav__add">
             <p class="header-time__add-setting">管理者設定</p>

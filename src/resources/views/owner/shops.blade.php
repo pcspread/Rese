@@ -60,7 +60,7 @@
                     <form class="list-content__delete-form" action="/owner/shop/delete/{{ $shop['id'] }}" method="POST">
                     @method('DELETE')
                     @csrf
-                        <button class="list-button delete" type="button" onclick="return confirmDel()">削除</button>
+                        <button class="list-button delete" onclick="return confirmDel()">削除</button>
                     </form>
                 </div>
             </div>

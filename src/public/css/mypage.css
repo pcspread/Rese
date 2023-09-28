@@ -130,7 +130,7 @@ reserve
     width: 100%;
 }
 
-.reserce-card__item-group {
+.reserve-card__item-group {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -295,7 +295,7 @@ shops
 }
 
 @media screen and (max-width: 348px) {
-    .reserce-card__item-group {
+    .reserve-card__item-group {
         display: block;
     }
 

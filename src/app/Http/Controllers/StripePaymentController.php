@@ -16,10 +16,10 @@ class StripePaymentController extends Controller
      * @return view
      */
     public function indexStripe($reserve_id)
-    {   
+    {
         // 予約情報の取得
         $reserve = Reserve::find($reserve_id);
-        
+
         // 予約情報が無い場合
         if (empty($reserve)) {
             return redirect('/mypage');
@@ -27,7 +27,7 @@ class StripePaymentController extends Controller
 
         // 予約情報をセッションに格納
         session()->put('reserve', $reserve);
-        
+
         // 予約店舗名の取得
         $name = Shop::find($reserve['shop_id'])->name;
 
@@ -35,10 +35,10 @@ class StripePaymentController extends Controller
         $line_item = [
             'price_data' => [
                 'currency' => 'jpy',
-                'unit_amount' => 1000 * $reserve['number'],
+                'unit_amount' => 1000,
                 'product_data' => [
                     'name' => $name,
-                    'description' => "(内訳)¥1,000✖{$reserve['number']}名様　　　　　　　　　　　　　　　　　　　決済後、飲食店のコメント欄にコメントいただけるようになります。",
+                    'description' => "決済後、飲食店のコメント欄にコメントいただけるようになります。",
                 ],
             ],
             'quantity'    => $reserve['number'],
