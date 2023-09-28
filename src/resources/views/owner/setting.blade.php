@@ -10,7 +10,7 @@
 
 @section('content')
 <div class="setting-section">
-    <h2 class="setting-title">管理者設定</h2>
+    <h2 class="setting-title">代表者設定</h2>
     <div class="setting-input">
         <form class="setting-input__form" action="/owner/setting" method="POST">
         @csrf

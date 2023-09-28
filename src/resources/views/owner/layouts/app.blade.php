@@ -53,7 +53,7 @@
 
         @if (Auth::user()->email === config('owner.owner_mail'))
         <div class="header-nav__add">
-            <p class="header-time__add-setting">管理者設定</p>
+            <p class="header-time__add-setting">代表者設定</p>
         </div>
         @endif
 
